@@ -1,0 +1,63 @@
+<nav id="navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span> MovieDB</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div id="navbar-collapse" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Browse<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Browse Movies</a></li>
+            <li><a href="#">Browse Actors</a></li>
+            <li><a href="#">Browse Directors</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Add<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Add Movies</a></li>
+            <li><a href="#">Add Actors/Directors</a></li>
+            <li><a href="#">Add Actors to Movies</a></li>
+            <li><a href="#">Add Directors to Movies</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Reviews<span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Browse Movie Reviews</a></li>
+            <li><a href="#">Write a Movie Review</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form id="search_form" class="navbar-form navbar-right" role="search" method="post" action="#">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" id="id_search_term" maxlength="200" name="search_term" placeholder="Search..." type="text">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" id="search_submit_button" type="submit">
+                  <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</nav>
