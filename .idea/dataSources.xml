@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3333311980">
+  <component name="DataSourceManagerImpl" format="xml" hash="1505788979">
     <data-source source="LOCAL" name="PostgreSQL - moviedb_dev@localhost" uuid="9d4ad862-71cf-4b50-8925-3d116fd58c0d">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
