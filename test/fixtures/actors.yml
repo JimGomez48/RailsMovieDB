@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last: MyString
+  first: MyString
+  sex: MyString
+  dob: 2015-08-04
+  dod: 2015-08-04
+
+two:
+  last: MyString
+  first: MyString
+  sex: MyString
+  dob: 2015-08-04
+  dod: 2015-08-04

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="PostgreSQL - test@localhost" uuid="47270574-02ec-46d8-9128-3a7fbdd2f499">
+    <data-source name="PostgreSQL - moviedb_dev@localhost" uuid="9d4ad862-71cf-4b50-8925-3d116fd58c0d">
       <secret-storage>master_key</secret-storage>
       <user-name>admin</user-name>
-      <schema-pattern>test.pg_catalog test.public</schema-pattern>
-      <default-schemas>test.pg_catalog test.public</default-schemas>
+      <schema-pattern>moviedb_dev.pg_catalog moviedb_dev.public</schema-pattern>
+      <default-schemas>moviedb_dev.pg_catalog moviedb_dev.public</default-schemas>
     </data-source>
   </component>
 </project>

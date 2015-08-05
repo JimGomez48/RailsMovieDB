@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :directors
+  resources :actors
+  resources :movies
   # You can have the root of your site routed with "root"
   root 'home#index'
 
