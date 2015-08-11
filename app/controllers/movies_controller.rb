@@ -1,7 +1,6 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
-    render json: @movies
   end
 
   def new
@@ -17,8 +16,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movies = Movie.all
-    render json: @movies
+    @movies = Movie.find(2)
   end
 
   def update

@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :reviews
-  resources :directors
-  resources :actors
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :movies
+      resources :actors
+      resources :directors
+      resources :reviews
+    end
+  end
+
   resources :movies
+  resources :actors
+  resources :directors
+  resources :reviews
 
   # get 'home/index'
 
