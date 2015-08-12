@@ -1,2 +1,23 @@
 module ApplicationHelper
+  def page_title
+    title = "Rails Movie Database"
+  end
+
+  def lorem
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Fugiat voluptate debitis ad quidem in distinctio obcaecati eligendi cum? Voluptatibus non a repellendus laborum,
+    quam doloribus eligendi esse minima quis sequi inventore nam deleniti eius. Cupiditate autem fugit? Perspiciatis
+    aliquid facere sapiente incidunt, ratione quaerat inventore, assumenda dolor numquam eligendi reiciendis veritatis
+    natus saepe iste quidem a? Praesentium sit laudantium delectus quaerat velit magni, amet perferendis nostrum a
+    quibusdam laborum eos earum eaque, ea eligendi et asperiores porro adipisci expedita placeat corporis, sit officia
+    dignissimos iusto voluptatum beatae suscipit quod error, recusandae magnam laudantium sed blanditiis optio omnis
+    quis. In autem tenetur repudiandae iste est odit nesciunt officia cupiditate dolore reprehenderit. Aut nisi
+    repellendus explicabo ullam inventore modi tenetur, distinctio magnam amet sint ut enim quibusdam natus non. Nulla
+    iusto mollitia facere similique quaerat accusantium nostrum at excepturi, et blanditiis dolor quo voluptates at
+    cumque, exercitationem illum libero quod totam nobis molestias eum, veritatis in voluptatibus dolores non quidem
+    quis.'
+  end
 end

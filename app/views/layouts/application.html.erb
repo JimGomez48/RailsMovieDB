@@ -12,7 +12,7 @@
   <%= render 'layouts/navbar' %>
 
   <div id="main" class="jumbotron text-center">
-    <%= yield %>
+    <%= content_for?(:main) ? yield(:main) : yield %>
   </div>
 
   <%= render 'layouts/footer' %>
