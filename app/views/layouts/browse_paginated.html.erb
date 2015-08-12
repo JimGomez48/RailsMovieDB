@@ -1,0 +1,40 @@
+<% content_for :main do %>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'layouts/paginator' %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-dark text-left">
+            <div class="panel-heading">
+              <div class="btn-group pull-right">
+                <h4>
+                  <button class="btn btn-ghost btn-panel btn-dark btn-circle btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="glyphicon glyphicon-option-vertical"></span>
+                  </button>
+                </h4>
+              </div>
+              <h2>
+                <span class="glyphicon glyphicon-film"></span>
+                Movies
+              </h2>
+            </div>
+            <%= yield :paginated_content %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= render 'layouts/paginator' %>
+        </div>
+      </div>
+
+    </div>
+<% end %>
+
+<%= render template: 'layouts/application' %>

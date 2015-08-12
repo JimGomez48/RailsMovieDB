@@ -1,23 +1,24 @@
-<div class="container">
-  <h1>Movies</h1>
-
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>Title</th>
-      <th>Year</th>
-      <th>Rating</th>
-      <th>Company</th>
-    </tr>
-
-    <% @movies.each do |movie| %>
-        <tr>
-          <td><%= movie.id %></td>
-          <td><%= movie.title %></td>
-          <td><%= movie.year %></td>
-          <td><%= movie.rating %></td>
-          <td><%= movie.company %></td>
-        </tr>
-    <% end %>
-  </table>
+<% content_for :paginated_content do %>
+<div class="list-group">
+  <% @movies.each do |movie| %>
+      <a class="list-group-item" href='#'>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="media-left">
+              <%= image_tag 'default_movie.png', height: 128, class: '' %>
+            </div>
+            <div class="media-body">
+              <h3 class="media-heading text-primary text-capitalize"><%= movie.cleaned_title %></h3>
+              <strong>Rating:</strong>
+              <%= mpaa_rating_icon(movie.rating) %>
+              </br>
+              <strong>Company:</strong> <%= movie.company %>
+              </br>
+              <strong>Year:</strong> <%= movie.year %>
+            </div>
+          </div>
+        </div>
+      </a>
+  <% end %>
 </div>
+<% end %>
