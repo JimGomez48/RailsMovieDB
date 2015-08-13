@@ -1,5 +1,8 @@
 <% content_for :paginated_content do %>
 <div class="list-group">
+  <% if @movies.empty? %>
+    <ul class="list-group-item"><h4><em>No movies to display</em></h4></ul>
+  <% else %>
   <% @movies.each do |movie| %>
       <a class="list-group-item" href='#'>
         <div class="row">
@@ -20,5 +23,6 @@
         </div>
       </a>
   <% end %>
+<% end %>
 </div>
 <% end %>

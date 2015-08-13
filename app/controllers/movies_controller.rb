@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   layout 'browse_paginated'
 
   def index
-    @movies = Movie.all
+    @movies = Movie.all.order(:title, :year)
   end
 
   def new

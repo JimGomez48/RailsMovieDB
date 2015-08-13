@@ -28,6 +28,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'squasher'
 # pagination gem
 gem 'will_paginate'
+# Use crack to parse xml and json and conversions
+gem 'crack'
+# Use json to convert to json
+gem 'json'
+# faster csv parsing than csv
+gem 'fastercsv'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

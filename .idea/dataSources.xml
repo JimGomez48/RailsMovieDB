@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1505788979">
+  <component name="DataSourceManagerImpl" format="xml" hash="1348316496">
     <data-source source="LOCAL" name="PostgreSQL - moviedb_dev@localhost" uuid="9d4ad862-71cf-4b50-8925-3d116fd58c0d">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/moviedb_dev</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - moviedb_test@localhost" uuid="2aa80ead-d687-4de4-80c7-e939c5d14fd9">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/moviedb_test</jdbc-url>
       <libraries />
     </data-source>
   </component>

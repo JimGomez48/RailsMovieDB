@@ -4,11 +4,15 @@
       <w>callout</w>
       <w>dropdown</w>
       <w>errorlist</w>
+      <w>fastercsv</w>
       <w>glyphicon</w>
+      <w>jbuilder</w>
       <w>jumbotron</w>
       <w>mpaa</w>
       <w>navbar</w>
       <w>paginator</w>
+      <w>squasher</w>
+      <w>turbolinks</w>
     </words>
   </dictionary>
 </component>
