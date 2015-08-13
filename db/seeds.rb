@@ -68,17 +68,39 @@ ActiveRecord::Base.transaction do
 end
 
 ActiveRecord::Base.transaction do
-#   genre
+  Genre.create(:id => 1, :name => 'Action')
+  Genre.create(:id => 2, :name => 'Adult')
+  Genre.create(:id => 3, :name => 'Adventure')
+  Genre.create(:id => 4, :name => 'Animation')
+  Genre.create(:id => 5, :name => 'Crime')
+  Genre.create(:id => 6, :name => 'Comedy')
+  Genre.create(:id => 7, :name => 'Documentary')
+  Genre.create(:id => 8, :name => 'Drama')
+  Genre.create(:id => 9, :name => 'Family')
+  Genre.create(:id => 10, :name => 'Fantasy')
+  Genre.create(:id => 11, :name => 'Horror')
+  Genre.create(:id => 12, :name => 'Musical')
+  Genre.create(:id => 13, :name => 'Mystery')
+  Genre.create(:id => 14, :name => 'Romance')
+  Genre.create(:id => 15, :name => 'Sci-Fi')
+  Genre.create(:id => 16, :name => 'Short')
+  Genre.create(:id => 17, :name => 'Thriller')
+  Genre.create(:id => 18, :name => 'War')
+  Genre.create(:id => 19, :name => 'Western')
 end
 
-ActiveRecord::Base.transaction do
-#   movieactor
-end
-
-ActiveRecord::Base.transaction do
-#   moviedirector
-end
-
-ActiveRecord::Base.transaction do
-#   moviegenre
-end
+# ActiveRecord::Base.transaction do
+#   CSV.foreach("#{seed_path}/movieactor1.csv") do |row|
+#
+#   end
+# end
+#
+# ActiveRecord::Base.transaction do
+#   CSV.foreach("#{seed_path}/moviedirector.csv") do |row|
+#
+#   end
+# end
+#
+# ActiveRecord::Base.transaction do
+#   CSV.foreach("#{seed_path}/moviegenre.csv") do |row|
+# end

@@ -7,5 +7,11 @@
       <schema-pattern>moviedb_dev.pg_catalog moviedb_dev.public</schema-pattern>
       <default-schemas>moviedb_dev.pg_catalog moviedb_dev.public</default-schemas>
     </data-source>
+    <data-source name="PostgreSQL - moviedb_test@localhost" uuid="2aa80ead-d687-4de4-80c7-e939c5d14fd9">
+      <secret-storage>master_key</secret-storage>
+      <user-name>admin</user-name>
+      <schema-pattern>moviedb_test.pg_catalog moviedb_test.public</schema-pattern>
+      <default-schemas>moviedb_test.pg_catalog moviedb_test.public</default-schemas>
+    </data-source>
   </component>
 </project>
