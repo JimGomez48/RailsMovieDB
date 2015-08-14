@@ -26,9 +26,8 @@ class MoviesController < ApplicationController
     @movie_actors = Actor.joins(:movie_actors)
                         .where('movie_actors.movie_id' => mid)
                         .select('actors.id, actors.last, actors.first, movie_actors.role')
-
-    # @movie_actors.each { |actor| puts "#{actor.last}, #{actor.first}" }
-    @reviews = [1, 1, 1]
+    @reviews = Review.where('movie_id' => mid)
+    @avg_rating = @reviews.average('rating')
   end
 
   def update

@@ -1,0 +1,20 @@
+<div class="bs-callout bs-callout-warning">
+  <div class="media">
+    <div class="media-left media-top">
+      <%= image_tag 'default_person.png', class: 'media-object', width: 56 %>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-capitalize"><%= review.username %></h4>
+      <small><%= pretty_print_datetime_abbrev(review.created_at.localtime) %></small>
+      <input
+      type="number"
+      class="rating form-control hide"
+      data-size="xxs" data-show-clear="false"
+      data-readonly="true"
+      value="<%= review.rating %>">
+    </div>
+  </div>
+  <div>
+    <h5><%= review.comment %></h5>
+  </div>
+</div>
