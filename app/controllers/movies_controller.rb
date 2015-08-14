@@ -18,12 +18,17 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:id])
-    @panel_heading = @movie.title
-    @genres = [1,1,1]
-    @directors = [1,1,1]
-    @actors = [1,1,1]
-    @reviews = [1,1,1]
+    mid = params[:id]
+    @movie = Movie.find(mid)
+    @panel_heading = @movie.cleaned_title
+    @genres = @movie.genres.order('name')
+    @directors = @movie.directors
+    @movie_actors = Actor.joins(:movie_actors)
+                        .where('movie_actors.movie_id' => mid)
+                        .select('actors.id, actors.last, actors.first, movie_actors.role')
+
+    # @movie_actors.each { |actor| puts "#{actor.last}, #{actor.first}" }
+    @reviews = [1, 1, 1]
   end
 
   def update
@@ -46,4 +51,5 @@ class MoviesController < ApplicationController
       when 'destroy'  then 'application'
     end
   end
+
 end

@@ -40,7 +40,7 @@
                       <h4><em>No genres to display</em></h4>
                   <% else %>
                       <% @genres.each do |genre| %>
-                          <h4><%= genre.to_s %></h4>
+                          <h4><%= genre.name %></h4>
                       <% end %>
                   <% end %>
                 </td>
@@ -60,11 +60,10 @@
               <% @directors.each do |director| %>
                   <tr>
                     <td>
-                      <!--<a class="text-primary text-capitalize" href="{% url 'DirectorDetail' director.did.id %}">-->
-                      <!--<img class="img-circle" src="{% static 'img/default_person.png' %}" width="24">-->
-                      <!--{{ director.did.get_full_name }}-->
-                      <!--</a>-->
-                      director link
+                      <a class="text-primary text-capitalize" href="#">
+                        <%= image_tag 'default_person.png', width: 24, class: 'img-circle' %>
+                        <%= "#{director.first} #{director.last}" %>
+                      </a>
                     </td>
                   </tr>
               <% end %>
@@ -75,23 +74,22 @@
       <!--Actors-->
       <div class="list-group-item">
         <h3 class="list-group-item-heading text-capitalize">Cast</h3>
-        <% if @actors.empty? %>
+        <% if @movie_actors.empty? %>
             <h4 class="text-muted"><em>No cast to display</em></h4>
         <% else %>
             <table class="table table-condensed table-striped no-border">
               <th class="text-info">Actor</th>
               <th class="text-info">Role</th>
-              <% @actors.each do |actor| %>
+              <% @movie_actors.each do |actor| %>
                   <tr>
                     <td>
-                      <!--<a class="text-primary text-capitalize" href="{% url 'ActorDetail' actor.aid.id %}">-->
-                      <!--<img class="img-circle" src="{% static 'img/default_person.png' %}" height="24">-->
-                      <!--{{ actor.aid.get_full_name }}-->
-                      <!--</a>-->
-                      actor link
+                      <a class="text-primary text-capitalize" href="#">
+                        <%= image_tag 'default_person.png', height: 24, class: 'img-circle' %>
+                        <%= "#{actor.first} #{actor.last}"%>
+                      </a>
                     </td>
                     <td>
-                      actor role
+                      <%= actor.role %>
                     </td>
                   </tr>
               <% end %>

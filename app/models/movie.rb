@@ -1,4 +1,11 @@
 class Movie < ActiveRecord::Base
+  has_many :movie_actors
+  has_many :actors, :through => :movie_actors
+  has_many :movie_directors
+  has_many :directors, :through => :movie_directors
+  has_many :movie_genres
+  has_many :genres, :through => :movie_genres
+
   ## If title ends with ', The', remove it from the end and prepend 'The ' to the title
   def cleaned_title
     pattern = /, The$/i
