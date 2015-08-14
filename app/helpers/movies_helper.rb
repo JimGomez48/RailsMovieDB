@@ -1,6 +1,5 @@
 module MoviesHelper
-  def mpaa_rating_icon(rating)
-    height = 14
+  def mpaa_rating_icon(rating, height)
     case rating
       when 'G'
         return image_tag('mpaa-icon_g.svg.png', height: height)

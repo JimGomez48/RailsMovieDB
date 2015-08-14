@@ -1,0 +1,128 @@
+<% content_for :show_content do %>
+    <div class="list-group">
+      <!--Movie Details -->
+      <div class="list-group-item">
+        <div class="media">
+          <div class="media-left media-top">
+            <%= image_tag 'default_movie.png', class: 'media_object' %>
+          </div>
+          <div class="media-body">
+            <Table class="table table-condensed no-border" border="0">
+              <tr>
+                <td><h4><strong>Year</strong></h4></td>
+                <td><h4><%= @movie.year %></h4></td>
+              </tr>
+              <tr>
+                <td><h4><strong>Company</strong></h4></td>
+                <td><h4><%= @movie.company %></h4></td>
+              </tr>
+              <tr>
+                <td><h4><strong>MPAA Rating</strong></h4></td>
+                <td><h4><%= mpaa_rating_icon(@movie.rating, height=20) %></h4></td>
+              </tr>
+              <tr>
+                <td><h4><strong>Avg. User Rating</strong></h4></td>
+                <td>
+                  <input
+                  type="number"
+                  class="rating form-control hide"
+                  data-size="xs"
+                  data-show-clear="false"
+                  data-readonly="true"
+                  value="3.5">
+                  <!--value="{{ avg_user_rating }}">-->
+                </td>
+              </tr>
+              <tr>
+                <td><h4><strong>Genres</strong></h4></td>
+                <td>
+                  <% if @genres.empty? %>
+                      <h4><em>No genres to display</em></h4>
+                  <% else %>
+                      <% @genres.each do |genre| %>
+                          <h4><%= genre.to_s %></h4>
+                      <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            </Table>
+          </div>
+        </div>
+      </div>
+
+      <!--Directors-->
+      <div class="list-group-item">
+        <h3 class="list-group-item-heading text-capitalize">Directors</h3>
+        <% if @directors.empty? %>
+            <h4 class="text-muted"><em>No directors to display</em></h4>
+        <% else %>
+            <table class="table table-condensed table-striped no-border">
+              <% @directors.each do |director| %>
+                  <tr>
+                    <td>
+                      <!--<a class="text-primary text-capitalize" href="{% url 'DirectorDetail' director.did.id %}">-->
+                      <!--<img class="img-circle" src="{% static 'img/default_person.png' %}" width="24">-->
+                      <!--{{ director.did.get_full_name }}-->
+                      <!--</a>-->
+                      director link
+                    </td>
+                  </tr>
+              <% end %>
+            </table>
+        <% end %>
+      </div>
+
+      <!--Actors-->
+      <div class="list-group-item">
+        <h3 class="list-group-item-heading text-capitalize">Cast</h3>
+        <% if @actors.empty? %>
+            <h4 class="text-muted"><em>No cast to display</em></h4>
+        <% else %>
+            <table class="table table-condensed table-striped no-border">
+              <th class="text-info">Actor</th>
+              <th class="text-info">Role</th>
+              <% @actors.each do |actor| %>
+                  <tr>
+                    <td>
+                      <!--<a class="text-primary text-capitalize" href="{% url 'ActorDetail' actor.aid.id %}">-->
+                      <!--<img class="img-circle" src="{% static 'img/default_person.png' %}" height="24">-->
+                      <!--{{ actor.aid.get_full_name }}-->
+                      <!--</a>-->
+                      actor link
+                    </td>
+                    <td>
+                      actor role
+                    </td>
+                  </tr>
+              <% end %>
+            </table>
+        <% end %>
+      </div>
+
+      <!--Reviews-->
+      <div class="list-group-item">
+        <h3 class="list-group-item-heading text-capitalize">Reviews</h3>
+        <% if @reviews.empty? %>
+            <h4 class="text-muted"><em>No Reviews To display</em></h4>
+
+            <div class="row" align="center">
+              <div class="col-lg-12">
+                <a class="btn btn-success" href="{% url 'WriteReview' movie.id %}">Write a review</a>
+              </div>
+            </div>
+        <% else %>
+            <% @reviews.each do |review| %>
+                <!--{% include 'controls/review_card.html' with review=review %}-->
+                <h5>review card</h5>
+            <% end %>
+            <div class="row" align="center">
+              <div class="col-lg-12">
+                <a class="btn btn-default" href="{% url 'ViewReview' movie.id %}">View More</a>
+                <a class="btn btn-success" href="{% url 'WriteReview' movie.id %}">Write a review</a>
+              </div>
+            </div>
+        <% end %>
+      </div>
+
+    </div>
+<% end %>

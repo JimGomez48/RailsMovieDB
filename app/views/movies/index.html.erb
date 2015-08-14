@@ -1,4 +1,4 @@
-<% content_for :paginated_content do %>
+<% content_for :browse_content do %>
 <div class="list-group">
   <% if @movies.empty? %>
     <ul class="list-group-item"><h4><em>No movies to display</em></h4></ul>
@@ -13,7 +13,7 @@
             <div class="media-body">
               <h3 class="media-heading text-primary text-capitalize"><%= movie.cleaned_title %></h3>
               <strong>Rating:</strong>
-              <%= mpaa_rating_icon(movie.rating) %>
+              <%= mpaa_rating_icon(movie.rating, height=14) %>
               </br>
               <strong>Company:</strong> <%= movie.company %>
               </br>
