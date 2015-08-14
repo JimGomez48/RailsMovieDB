@@ -22,10 +22,11 @@ class MoviesController < ApplicationController
     @movie = Movie.find(mid)
     @panel_heading = @movie.cleaned_title
     @genres = @movie.genres.order('name')
-    @directors = @movie.directors
+    @directors = @movie.directors.order(:last, :first)
     @movie_actors = Actor.joins(:movie_actors)
                         .where('movie_actors.movie_id' => mid)
                         .select('actors.id, actors.last, actors.first, movie_actors.role')
+                        .order('actors.last', 'actors.first')
     @reviews = Review.where('movie_id' => mid)
     @avg_rating = @reviews.average('rating')
   end
