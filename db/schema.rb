@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20150813095649) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name", limit: 20
+    t.string "name", limit: 20, null: false
   end
 
   create_table "movie_actors", force: :cascade do |t|
-    t.integer "movie_id"
-    t.integer "actor_id"
+    t.integer "movie_id", null: false
+    t.integer "actor_id", null: false
     t.string  "role"
   end
 

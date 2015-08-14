@@ -1614,7 +1614,7 @@
     </table>
     <table name="genres" schema="public" catalog="moviedb_dev" type="TABLE">
       <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZ2VucmVzX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
-      <column name="name" sqlType="varchar" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="genres_pkey" columns="id"/>
       <exported-key name="fk_rails_6f8a28d404" table="movie_genres" schema="public" catalog="moviedb_dev" columns="genre_id"/>
     </table>
@@ -1632,8 +1632,8 @@
     </table>
     <table name="movie_actors" schema="public" catalog="moviedb_dev" type="TABLE">
       <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnbW92aWVfYWN0b3JzX2lkX3NlcSc6OnJlZ2NsYXNzKQ==" autoIncrement="true"/>
-      <column name="movie_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="actor_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="movie_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="actor_id" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="role" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <primary-key name="movie_actors_pkey" columns="id"/>
       <foreign-key name="fk_rails_0b4046e48d" columns="actor_id" ref-table="actors" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="0" deferrability="2"/>

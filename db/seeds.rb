@@ -9,98 +9,165 @@ require 'csv'
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 seed_path = Rails.root.join('db', 'seeds')
+connection = ActiveRecord::Base.connection
 
+# movies
 ActiveRecord::Base.transaction do
-  CSV.foreach("#{seed_path}/movie.csv") do |row|
-    Movie.create(
-        :id => row[0],
-        :title => row[1],
-        :year => row[2],
-        :rating => row[3],
-        :company => row[4],
-    )
-  end
+  sql = "
+    BEGIN;
+      COPY movies
+      FROM '#{seed_path}/movie.csv'
+      DELIMITER ',' CSV
+      NULL '\\N';
+    END;
+  "
+  connection.execute(sql)
 end
 
+# actors
 ActiveRecord::Base.transaction do
-  CSV.foreach("#{seed_path}/actor1.csv") do |row|
-    Actor.create(
-        :id => row[0],
-        :last => row[1],
-        :first => row[2],
-        :sex => row[3],
-        :dob => row[4],
-        :dod => row[5],
-    )
-  end
-  CSV.foreach("#{seed_path}/actor2.csv") do |row|
-    Actor.create(
-        :id => row[0],
-        :last => row[1],
-        :first => row[2],
-        :sex => row[3],
-        :dob => row[4],
-        :dod => row[5],
-    )
-  end
-  CSV.foreach("#{seed_path}/actor3.csv") do |row|
-    Actor.create(
-        :id => row[0],
-        :last => row[1],
-        :first => row[2],
-        :sex => row[3],
-        :dob => row[4],
-        :dod => row[5],
-    )
-  end
+  sql = "
+    BEGIN;
+      COPY actors
+      FROM '#{seed_path}/actor1.csv'
+      DELIMITER ',' CSV
+      NULL '\\N';
+    END;
+
+    BEGIN;
+      COPY actors
+      FROM '#{seed_path}/actor2.csv'
+      DELIMITER ',' CSV
+      NULL '\\N';
+    END;
+
+    BEGIN;
+      COPY actors
+      FROM '#{seed_path}/actor3.csv'
+      DELIMITER ',' CSV
+      NULL '\\N';
+    END;
+  "
+  connection.execute(sql)
 end
 
+# directors
 ActiveRecord::Base.transaction do
-  CSV.foreach("#{seed_path}/director.csv") do |row|
-    Director.create(
-        :id => row[0],
-        :last => row[1],
-        :first => row[2],
-        :dob => row[3],
-        :dod => row[4],
-    )
+  sql = "
+    BEGIN;
+      COPY directors
+      FROM '#{seed_path}/director.csv'
+      DELIMITER ',' CSV
+      NULL '\\N';
+    END;
+  "
+  connection.execute(sql)
+end
+
+# genres
+ACTION      = 'Action'
+ADULT       = 'Adult'
+ADVENTURE   = 'Adventure'
+ANIMATION   = 'Animation'
+CRIME       = 'Crime'
+COMEDY      = 'Comedy'
+DOCUMENTARY = 'Documentary'
+DRAMA       = 'Drama'
+FAMILY      = 'Family'
+FANTASY     = 'Fantasy'
+HORROR      = 'Horror'
+MUSICAL     = 'Musical'
+MYSTERY     = 'Mystery'
+ROMANCE     = 'Romance'
+SCI_FI      = 'Sci-Fi'
+SHORT       = 'Short'
+THRILLER    = 'Thriller'
+WAR         = 'War'
+WESTERN     = 'Western'
+
+genre_hash = {
+    ACTION      => 1,
+    ADULT       => 2 ,
+    ADVENTURE   => 3,
+    ANIMATION   => 4,
+    CRIME       => 5,
+    COMEDY      => 6,
+    DOCUMENTARY => 7,
+    DRAMA       => 8,
+    FAMILY      => 9,
+    FANTASY     => 10,
+    HORROR      => 11,
+    MUSICAL     => 12,
+    MYSTERY     => 13,
+    ROMANCE     => 14,
+    SCI_FI      => 15,
+    SHORT       => 16,
+    THRILLER    => 17,
+    WAR         => 18,
+    WESTERN     => 19,
+}
+
+ActiveRecord::Base.transaction do
+  Genre.create(:id => genre_hash[ACTION], :name => ACTION)
+  Genre.create(:id => genre_hash[ADULT], :name => ADULT)
+  Genre.create(:id => genre_hash[ADVENTURE], :name => ADVENTURE)
+  Genre.create(:id => genre_hash[ANIMATION], :name => ANIMATION)
+  Genre.create(:id => genre_hash[CRIME], :name => CRIME)
+  Genre.create(:id => genre_hash[COMEDY], :name => COMEDY)
+  Genre.create(:id => genre_hash[DOCUMENTARY], :name => DOCUMENTARY)
+  Genre.create(:id => genre_hash[DRAMA], :name => DRAMA)
+  Genre.create(:id => genre_hash[FAMILY], :name => FAMILY)
+  Genre.create(:id => genre_hash[FANTASY], :name => FANTASY)
+  Genre.create(:id => genre_hash[HORROR], :name => HORROR)
+  Genre.create(:id => genre_hash[MUSICAL], :name => MUSICAL)
+  Genre.create(:id => genre_hash[MYSTERY], :name => MYSTERY)
+  Genre.create(:id => genre_hash[ROMANCE], :name => ROMANCE)
+  Genre.create(:id => genre_hash[SCI_FI], :name => SCI_FI)
+  Genre.create(:id => genre_hash[SHORT], :name => SHORT)
+  Genre.create(:id => genre_hash[THRILLER], :name => THRILLER)
+  Genre.create(:id => genre_hash[WAR], :name => WAR)
+  Genre.create(:id => genre_hash[WESTERN], :name => WESTERN)
+end
+
+# movie_actors
+ActiveRecord::Base.transaction do
+  quote_pattern = /'/
+  inserts = []
+  CSV.foreach("#{seed_path}/movieactor1.csv") do |row|
+    id, mid, aid, role = row
+    role = role.gsub(quote_pattern){ %q('') } if quote_pattern.match(role)
+    inserts.push("(#{mid}, #{aid}, '#{role}')")
   end
+  CSV.foreach("#{seed_path}/movieactor2.csv") do |row|
+    id, mid, aid, role = row
+    role = role.gsub(quote_pattern){ %q('') } if quote_pattern.match(role)
+    inserts.push("(#{mid}, #{aid}, '#{role}')")
+  end
+  sql = "INSERT INTO movie_actors (movie_id, actor_id, role) VALUES #{inserts.join(', ')};"
+  connection.execute(sql)
 end
 
+# movie_directors
 ActiveRecord::Base.transaction do
-  Genre.create(:id => 1, :name => 'Action')
-  Genre.create(:id => 2, :name => 'Adult')
-  Genre.create(:id => 3, :name => 'Adventure')
-  Genre.create(:id => 4, :name => 'Animation')
-  Genre.create(:id => 5, :name => 'Crime')
-  Genre.create(:id => 6, :name => 'Comedy')
-  Genre.create(:id => 7, :name => 'Documentary')
-  Genre.create(:id => 8, :name => 'Drama')
-  Genre.create(:id => 9, :name => 'Family')
-  Genre.create(:id => 10, :name => 'Fantasy')
-  Genre.create(:id => 11, :name => 'Horror')
-  Genre.create(:id => 12, :name => 'Musical')
-  Genre.create(:id => 13, :name => 'Mystery')
-  Genre.create(:id => 14, :name => 'Romance')
-  Genre.create(:id => 15, :name => 'Sci-Fi')
-  Genre.create(:id => 16, :name => 'Short')
-  Genre.create(:id => 17, :name => 'Thriller')
-  Genre.create(:id => 18, :name => 'War')
-  Genre.create(:id => 19, :name => 'Western')
+  inserts = []
+  CSV.foreach("#{seed_path}/moviedirector.csv") do |row|
+    id, mid, did = row
+    inserts.push("(#{mid}, #{did})")
+  end
+  sql = "INSERT INTO movie_directors (movie_id, director_id) VALUES #{inserts.join(', ')};"
+  connection.execute(sql)
 end
 
-# ActiveRecord::Base.transaction do
-#   CSV.foreach("#{seed_path}/movieactor1.csv") do |row|
-#
-#   end
-# end
-#
-# ActiveRecord::Base.transaction do
-#   CSV.foreach("#{seed_path}/moviedirector.csv") do |row|
-#
-#   end
-# end
-#
-# ActiveRecord::Base.transaction do
-#   CSV.foreach("#{seed_path}/moviegenre.csv") do |row|
-# end
+# movie_genres
+ActiveRecord::Base.transaction do
+  inserts = []
+  CSV.foreach("#{seed_path}/moviegenre.csv") do |row|
+    id, mid, genre = row
+    genre_id = genre_hash[genre]
+    inserts.push("(#{mid}, #{genre_id})")
+  end
+  sql = "INSERT INTO movie_genres (movie_id, genre_id) VALUES #{inserts.join(', ')};"
+  connection.execute(sql)
+end
+
+# reviews: NOTHING TO SEED

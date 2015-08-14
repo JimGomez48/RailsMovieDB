@@ -20,12 +20,12 @@ class InitSchema < ActiveRecord::Migration
     end
     
     create_table "genres", force: :cascade do |t|
-      t.string "name", limit: 20
+      t.string "name", limit: 20, null: false
     end
     
     create_table "movie_actors", force: :cascade do |t|
-      t.integer "movie_id"
-      t.integer "actor_id"
+      t.integer "movie_id", null: false
+      t.integer "actor_id", null: false
       t.string  "role"
     end
     
@@ -41,18 +41,18 @@ class InitSchema < ActiveRecord::Migration
     
     create_table "movies", force: :cascade do |t|
       t.string  "title",   limit: 100, null: false
-      t.integer "year",                null: false
+      t.integer "year",    limit: 4,   null: false
       t.string  "rating",  limit: 10,  null: false
       t.string  "company", limit: 50,  null: false
     end
     
     create_table "reviews", force: :cascade do |t|
-      t.string   "username",   limit: 20, null: false
-      t.integer  "movie_id",              null: false
-      t.integer  "rating",     limit: 2,  null: false
-      t.text     "comment"
-      t.datetime "created_at",            null: false
-      t.datetime "updated_at",            null: false
+      t.string   "username",   limit: 20,  null: false
+      t.integer  "movie_id",               null: false
+      t.integer  "rating",     limit: 2,   null: false
+      t.text     "comment",    limit: 2000
+      t.datetime "created_at",             null: false
+      t.datetime "updated_at",             null: false
     end
     
     add_foreign_key "movie_actors", "actors", on_delete: :cascade
