@@ -8,7 +8,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span> MovieDB</a>
+      <!--<a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span> MovieDB</a>-->
+      <%= link_to '/', class: 'navbar-brand' do %>
+          <span class="glyphicon glyphicon-home"></span> MovieDB
+      <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -19,9 +22,9 @@
             Browse<span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Browse Movies</a></li>
-            <li><a href="#">Browse Actors</a></li>
-            <li><a href="#">Browse Directors</a></li>
+            <li><%= link_to 'Browse Movies', movies_path %></li>
+            <li><%= link_to 'Browse Actors', actors_path %></li>
+            <li><%= link_to 'Browse Directors', directors_path %></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -29,8 +32,9 @@
             Add<span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Add Movies</a></li>
-            <li><a href="#">Add Actors/Directors</a></li>
+            <li><%= link_to 'Add Movies', new_movie_path %></li>
+            <li><%= link_to 'Add Actors', new_actor_path %></li>
+            <li><%= link_to 'Add Directors', new_director_path %></li>
             <li><a href="#">Add Actors to Movies</a></li>
             <li><a href="#">Add Directors to Movies</a></li>
           </ul>
@@ -40,8 +44,10 @@
             Reviews<span class="caret"></span>
           </a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Browse Movie Reviews</a></li>
-            <li><a href="#">Write a Movie Review</a></li>
+            <li><%= link_to 'Browse Movie Reviews', reviews_path %></li>
+            <li><%= link_to 'Write a Movie Review', new_review_path %></li>
+            <!--<li><a href="#">Browse Movie Reviews</a></li>-->
+            <!--<li><a href="#">Write a Movie Review</a></li>-->
           </ul>
         </li>
       </ul>
