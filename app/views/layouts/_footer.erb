@@ -2,27 +2,30 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <a class="" href="#">
-          <h3><span class="glyphicon glyphicon-home"></span> MovieDB</h3>
-        </a>
+        <%= link_to root_path do %>
+            <h3><span class="glyphicon glyphicon-home"></span> MovieDB</h3>
+        <% end %>
       </div>
       <div class="col-md-3">
         <h4 class="text-primary">Browse</h4>
-        <a href="#">Browse Movies</a></br>
-        <a href="#">Browse Actors</a></br>
-        <a href="#">Browse Directors</a></br>
+        <%= link_to 'Browse Movies', movies_path %></br>
+        <%= link_to 'Browse Actors', actors_path %></br>
+        <%= link_to 'Browse Directors', directors_path %></br>
       </div>
       <div class="col-md-3">
         <h4 class="text-primary">Add</h4>
-        <a href="#">Add Movies</a></br>
-        <a href="#">Add Actors/Directors</a></br>
+        <%= link_to 'Add Movies', new_movie_path %></br>
+        <%= link_to 'Add Actors', new_actor_path %></br>
+        <%= link_to 'Add Directors', new_director_path %></br>
         <a href="#">Add Actors to Movies</a></br>
         <a href="#">Add Directors to Movies</a></br>
       </div>
       <div class="col-md-3">
         <h4 class="text-primary">Reviews</h4>
-        <a href="#">Browse Movie Reviews</a></br>
-        <a href="#">Write a Movie Review</a></br>
+        <%= link_to 'Browse Movie Reviews', reviews_path %></br>
+        <%= link_to 'Write a Movie Review', new_review_path %></br>
+        <!--<li><a href="#">Browse Movie Reviews</a></li>-->
+        <!--<li><a href="#">Write a Movie Review</a></li>-->
       </div>
     </div>
   </div>
