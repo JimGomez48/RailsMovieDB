@@ -28,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'squasher'
 # pagination gem
 gem 'will_paginate'
+# prettier pagination with bootstrap
+gem 'will_paginate-bootstrap'
 # Use crack to parse xml and json and conversions
 gem 'crack'
 # Use json to convert to json

@@ -1,3 +1,11 @@
+<% content_for :panel_title do %>
+    <span class="glyphicon glyphicon-user"></span> Actors
+<% end %>
+
+<% content_for :paginator do %>
+    <%= render 'layouts/paginator', items: @actors %>
+<% end%>
+
 <% content_for :browse_content do %>
     <div class="list-group">
       <% if @actors.empty? %>

@@ -1,8 +1,10 @@
 class ActorsController < ApplicationController
   layout :resolve_layout
 
+  RESULTS_PER_PAGE = 20
+
   def index
-    @actors = Actor.all.order(:last, :first, :dob).limit(100)
+    @actors = Actor.all.order(:last, :first, :dob).limit(100).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
   end
 
   def new

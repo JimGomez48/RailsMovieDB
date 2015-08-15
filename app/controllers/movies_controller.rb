@@ -1,8 +1,11 @@
 class MoviesController < ApplicationController
   layout :resolve_layout
 
+  RESULTS_PER_PAGE = 20
+
   def index
-    @movies = Movie.all.order(:title, :year).limit(100)
+    # @movies = Movie.all.order(:title, :year).limit(100)
+    @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
   end
 
   def new

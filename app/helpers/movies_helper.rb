@@ -1,8 +1,4 @@
 module MoviesHelper
-  def panel_title
-    'Movies'
-  end
-
   def mpaa_rating_icon(rating, height)
     case rating
       when 'G'
