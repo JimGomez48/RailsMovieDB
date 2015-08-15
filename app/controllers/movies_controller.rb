@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   layout :resolve_layout
 
   def index
-    @movies = Movie.all.order(:title, :year)
+    @movies = Movie.all.order(:title, :year).limit(100)
   end
 
   def new

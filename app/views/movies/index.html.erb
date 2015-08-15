@@ -1,28 +1,28 @@
 <% content_for :browse_content do %>
-<div class="list-group">
-  <% if @movies.empty? %>
-    <ul class="list-group-item"><h4><em>No movies to display</em></h4></ul>
-  <% else %>
-  <% @movies.each do |movie| %>
-      <a class="list-group-item" href='#'>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="media-left">
-              <%= image_tag 'default_movie.png', height: 128, class: '' %>
-            </div>
-            <div class="media-body">
-              <h3 class="media-heading text-primary text-capitalize"><%= movie.cleaned_title %></h3>
-              <strong>Rating:</strong>
-              <%= mpaa_rating_icon(movie.rating, height=14) %>
-              </br>
-              <strong>Company:</strong> <%= movie.company %>
-              </br>
-              <strong>Year:</strong> <%= movie.year %>
-            </div>
-          </div>
-        </div>
-      </a>
-  <% end %>
-<% end %>
-</div>
+    <div class="list-group">
+      <% if @movies.empty? %>
+          <ul class="list-group-item"><h4><em>No movies to display</em></h4></ul>
+      <% else %>
+          <% @movies.each do |movie| %>
+              <%= link_to movie, class: 'list-group-item' do %>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="media-left">
+                        <%= image_tag 'default_movie.png', height: 128, class: '' %>
+                      </div>
+                      <div class="media-body">
+                        <h3 class="media-heading text-primary text-capitalize"><%= movie.cleaned_title %></h3>
+                        <strong>Rating:</strong>
+                        <%= mpaa_rating_icon(movie.rating, height=14) %>
+                        </br>
+                        <strong>Company:</strong> <%= movie.company %>
+                        </br>
+                        <strong>Year:</strong> <%= movie.year %>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
+          <% end %>
+      <% end %>
+    </div>
 <% end %>
