@@ -20,10 +20,10 @@
                       </div>
                       <div class="media-body">
                         <h3 class="media-heading text-primary text-capitalize"><%= "#{actor.first} #{actor.last}" %></h3>
-                        <strong>DOB: </strong> <%= pretty_print_date(actor.dob) %>
+                        <strong>Born: </strong> <%= pretty_print_date(actor.dob) %>
                         <% if !actor.dod.nil? %>
                         </br>
-                        <strong>DOD: </strong> <%= pretty_print_date(actor.dod) %>
+                        <strong>Died: </strong> <%= pretty_print_date(actor.dod) %>
                         <% end %>
                         </br>
                         <strong>Sex: </strong> <%= actor.sex %>
