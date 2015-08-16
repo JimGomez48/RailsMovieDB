@@ -4,7 +4,7 @@
 
 <% content_for :paginator do %>
     <%= render 'layouts/paginator', items: @actors %>
-<% end%>
+<% end %>
 
 <% content_for :browse_content do %>
     <div class="list-group">
@@ -22,8 +22,8 @@
                         <h3 class="media-heading text-primary text-capitalize"><%= "#{actor.first} #{actor.last}" %></h3>
                         <strong>Born: </strong> <%= pretty_print_date(actor.dob) %>
                         <% if !actor.dod.nil? %>
-                        </br>
-                        <strong>Died: </strong> <%= pretty_print_date(actor.dod) %>
+                            </br>
+                            <strong>Died: </strong> <%= pretty_print_date(actor.dod) %>
                         <% end %>
                         </br>
                         <strong>Sex: </strong> <%= actor.sex %>

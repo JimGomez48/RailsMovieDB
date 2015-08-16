@@ -1,10 +1,5 @@
-class MoviesController < ApplicationController
-  layout :resolve_layout
-
-  RESULTS_PER_PAGE = 20
-
+class MoviesController < ResourceBaseController
   def index
-    # @movies = Movie.all.order(:title, :year).limit(100)
     @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
   end
 
@@ -41,18 +36,4 @@ class MoviesController < ApplicationController
   def destroy
     # TODO
   end
-
-  private
-  def resolve_layout
-    case action_name
-      when 'index'    then 'browse_base'
-      when 'new'      then 'form_base'
-      when 'create'   then 'application'
-      when 'edit'     then 'application'
-      when 'show'     then 'show_base'
-      when 'update'   then 'application'
-      when 'destroy'  then 'application'
-    end
-  end
-
 end
