@@ -16,7 +16,8 @@ class DirectorsController < ResourceBaseController
   end
 
   def show
-    # TODO
+    @director = Director.find(params[:id])
+    @filmography = @director.movies.order(:title, :year)
   end
 
   def update

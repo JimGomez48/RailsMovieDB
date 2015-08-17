@@ -15,4 +15,22 @@ module MoviesHelper
         return '<em>Rating surrendered</em>'.html_safe
     end
   end
+
+  def list_movie_genres(genres)
+    if genres.empty?
+      "<em>No genres to display</em>".html_safe
+    else
+      s = ''
+      started = false
+      genres.each do |genre|
+        if !started
+          s += genre.name.to_s
+          started = true
+        else
+          s += ", #{genre.name.to_s}"
+        end
+      end
+      s.html_safe
+    end
+  end
 end

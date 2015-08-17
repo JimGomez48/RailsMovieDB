@@ -16,16 +16,14 @@ class MoviesController < ResourceBaseController
   end
 
   def show
-    mid = params[:id]
-    @movie = Movie.find(mid)
-    @panel_heading = @movie.cleaned_title
+    @movie = Movie.find(params[:id])
     @genres = @movie.genres.order('name')
     @directors = @movie.directors.order(:last, :first)
     @movie_actors = Actor.joins(:movie_actors)
-                        .where('movie_actors.movie_id' => mid)
+                        .where('movie_actors.movie_id' => params[:id])
                         .select('actors.id, actors.last, actors.first, movie_actors.role')
                         .order('actors.last', 'actors.first')
-    @reviews = Review.where('movie_id' => mid)
+    @reviews = Review.where('movie_id' => params[:id])
     @avg_rating = @reviews.average('rating')
   end
 

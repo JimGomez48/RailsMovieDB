@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <h1><%= @page_header %></h1>
+      <h1><%= yield :page_header %></h1>
     </div>
   </div>
 
@@ -33,7 +33,7 @@
             </h4>
             <!--{% endif %}-->
           </div>
-          <h2><%= @panel_heading %></h2>
+          <h2><%= yield :show_heading %></h2>
         </div>
         <%= yield :show_content %>
       </div>

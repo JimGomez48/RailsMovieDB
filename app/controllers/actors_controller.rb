@@ -16,7 +16,11 @@ class ActorsController < ResourceBaseController
   end
 
   def show
-    # TODO
+    @actor = Actor.find(params[:id])
+    @filmography = Movie.joins(:movie_actors)
+                       .where('movie_actors.actor_id' => params[:id])
+                       .select('movies.id', 'movies.title', 'movies.year', 'movie_actors.role')
+                       .order('movies.year DESC', 'movies.title')
   end
 
   def update
