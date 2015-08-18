@@ -1,34 +1,30 @@
-module Api
-  module V1
-    class DirectorsController < ApiController
-      # TODO
-      def index
+class Api::V1::DirectorsController < ApiController
+  # TODO
+  def index
 
-      end
+  end
 
-      def new
+  def new
 
-      end
+  end
 
-      def create
+  def create
 
-      end
+  end
 
-      def edit
+  def edit
 
-      end
+  end
 
-      def show
+  def show
 
-      end
+  end
 
-      def update
+  def update
 
-      end
+  end
 
-      def destroy
+  def destroy
 
-      end
-    end
   end
 end
