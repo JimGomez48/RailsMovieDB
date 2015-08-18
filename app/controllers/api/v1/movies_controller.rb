@@ -24,13 +24,6 @@ class Api::V1::MoviesController < Api::V1::ApiController
                         .select('actors.id, actors.last, actors.first, movie_actors.role')
                         .order('actors.last', 'actors.first')
     @reviews = Review.where('movie_id' => params[:id])
-    render json: [
-               :movie => @movie,
-               :genres => @genres,
-               :directors => @directors,
-               :actors => @movie_actors,
-               :reviews => @reviews
-           ]
   end
 
   def update
