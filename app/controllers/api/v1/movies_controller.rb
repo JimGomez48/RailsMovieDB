@@ -1,6 +1,8 @@
 class Api::V1::MoviesController < Api::V1::ApiController
   def index
     @movies = Movie.all.order(:title, :year)
+    @status = SUCCESS
+    @code = nil
   end
 
   def new
@@ -24,6 +26,8 @@ class Api::V1::MoviesController < Api::V1::ApiController
                         .select('actors.id, actors.last, actors.first, movie_actors.role')
                         .order('actors.last', 'actors.first')
     @reviews = Review.where('movie_id' => params[:id])
+    @status = SUCCESS
+    @code = nil
   end
 
   def update
