@@ -1,6 +1,8 @@
 class MoviesController < ResourceBaseController
   def index
-    @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
+    @movies = Movie.all
+                  .order(:title, :year)
+                  .paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
   end
 
   def new

@@ -1,6 +1,8 @@
 class DirectorsController < ResourceBaseController
   def index
-    @directors = Director.all.order(:last, :first, :dob).limit(100).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
+    @directors = Director.all
+                     .order(:last, :first, :dob).limit(100)
+                     .paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
   end
 
   def new

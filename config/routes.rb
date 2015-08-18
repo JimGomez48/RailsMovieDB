@@ -1,21 +1,37 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  resources :movies do
+    resources :actors
+    resources :directors
+    resources :genres, only: [:index]
+    resources :reviews, only: [:index, :show, :new, :create, :edit, :update]
+  end
+  resources :actors do
+    resources :movies
+  end
+  resources :directors do
+    resources :movies
+  end
+  resources :reviews, only: [:index, :show, :new, :create, :edit, :update]
+
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
-      resources :movies
-      resources :actors
-      resources :directors
-      resources :reviews
+      resources :movies do
+        resources :actors
+        resources :directors
+        resources :genres, only: [:index]
+        resources :reviews, only: [:index, :show, :new, :create, :edit, :update]
+      end
+      resources :actors do
+        resources :movies
+      end
+      resources :directors do
+        resources :movies
+      end
+      resources :reviews, only: [:index, :show, :new, :create, :edit, :update]
     end
   end
-
-  resources :movies
-  resources :actors
-  resources :directors
-  resources :reviews
-
-  # get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
