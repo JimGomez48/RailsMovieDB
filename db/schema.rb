@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819044924) do
+ActiveRecord::Schema.define(version: 20150819072453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20150819044924) do
     t.date   "dod"
   end
 
-  add_index "actors", ["dob"], name: "index_actors_on_dob", using: :btree
   add_index "actors", ["first"], name: "index_actors_on_first", using: :btree
   add_index "actors", ["last", "first", "dob"], name: "index_actors_on_last_and_first_and_dob", unique: true, using: :btree
 
@@ -35,7 +34,6 @@ ActiveRecord::Schema.define(version: 20150819044924) do
     t.date   "dod"
   end
 
-  add_index "directors", ["dob"], name: "index_directors_on_dob", using: :btree
   add_index "directors", ["first"], name: "index_directors_on_first", using: :btree
   add_index "directors", ["last", "first", "dob"], name: "index_directors_on_last_and_first_and_dob", unique: true, using: :btree
 
@@ -56,15 +54,24 @@ ActiveRecord::Schema.define(version: 20150819044924) do
     t.string  "role"
   end
 
+  add_index "movie_actors", ["actor_id"], name: "index_movie_actors_on_actor_id", using: :btree
+  add_index "movie_actors", ["movie_id", "actor_id"], name: "index_movie_actors_on_movie_id_and_actor_id", unique: true, using: :btree
+
   create_table "movie_directors", force: :cascade do |t|
     t.integer "movie_id",    null: false
     t.integer "director_id", null: false
   end
 
+  add_index "movie_directors", ["director_id"], name: "index_movie_directors_on_director_id", using: :btree
+  add_index "movie_directors", ["movie_id", "director_id"], name: "index_movie_directors_on_movie_id_and_director_id", unique: true, using: :btree
+
   create_table "movie_genres", force: :cascade do |t|
     t.integer "movie_id", null: false
     t.integer "genre_id", null: false
   end
+
+  add_index "movie_genres", ["genre_id"], name: "index_movie_genres_on_genre_id", using: :btree
+  add_index "movie_genres", ["movie_id", "genre_id"], name: "index_movie_genres_on_movie_id_and_genre_id", unique: true, using: :btree
 
   create_table "movies", force: :cascade do |t|
     t.string  "title",       limit: 100, null: false
@@ -102,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150819044924) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["first"], name: "index_users_on_first", using: :btree
   add_index "users", ["last", "first", "username"], name: "index_users_on_last_and_first_and_username", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
