@@ -11,6 +11,35 @@ require 'csv'
 seed_path = Rails.root.join('db', 'seeds')
 connection = ActiveRecord::Base.connection
 
+# users
+ActiveRecord::Base.transaction do
+  User.create(
+      :last => 'admin',
+      :first => 'admin',
+      :username => 'admin',
+      :email => 'admin@test.com',
+      :password => 'test',
+      :salt => 'salt',
+  )
+  User.create(
+      :last => 'Gomez',
+      :first => 'Jim',
+      :username => 'jimbo1',
+      :email => 'jg1@test.com',
+      :password => 'test',
+      :salt => 'salt',
+  )
+  User.create(
+      :last => 'Gomez',
+      :first => 'Jim',
+      :username => 'jimbo2',
+      :email => 'jg2@test.com',
+      :password => 'test',
+      :salt => 'salt',
+  )
+end
+
+
 # movies
 ActiveRecord::Base.transaction do
   sql = "
@@ -170,29 +199,32 @@ ActiveRecord::Base.transaction do
   connection.execute(sql)
 end
 
-# reviews: test data
+# reviews
 ActiveRecord::Base.transaction do
-  #       667, 253
   Review.create(
-      :username => 'jim',
+      # :user_id => User.where(:username => 'jimbo1').select(:id),
+      :user_id => 1,
       :movie_id => '667',
       :rating => 5,
       :comment => 'Great Scorsese film!',
   )
   Review.create(
-      :username => 'jimbo',
+      # :user_id => User.where(:username => 'jimbo2').select(:id),
+      :user_id => 3,
       :movie_id => '667',
       :rating => 4,
       :comment => 'Awesome',
   )
   Review.create(
-      :username => 'jim',
+      # :user_id => User.where(:username => 'jimbo1'),
+      :user_id => 2,
       :movie_id => '253',
       :rating => 5,
       :comment => 'Hilarious!',
   )
   Review.create(
-      :username => 'jimbo',
+      # :user_id => User.where(:username => 'jimbo2').select(:id),
+      :user_id => 3,
       :movie_id => '253',
       :rating => 3,
       :comment => 'Pretty funny',
