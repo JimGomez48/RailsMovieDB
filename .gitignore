@@ -14,3 +14,4 @@
 workspace.xml
 tasks.xml
 .DS_STORE
+public/assets

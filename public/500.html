@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>(500) Server error</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   body {
@@ -32,7 +32,11 @@
   }
 
   h1 {
-    font-size: 100%;
+    color: #730E15;
+    line-height: 1.5em;
+  }
+
+  h2 {
     color: #730E15;
     line-height: 1.5em;
   }
@@ -58,7 +62,9 @@
   <!-- This file lives in public/500.html -->
   <div class="dialog">
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+      <h1>500</h1>
+      <h2><em>Something went wrong with the server</em></h2>
+      <p>:(</p>
     </div>
     <p>If you are the application owner check the logs for more information.</p>
   </div>

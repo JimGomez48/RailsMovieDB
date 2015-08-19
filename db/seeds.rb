@@ -170,4 +170,31 @@ ActiveRecord::Base.transaction do
   connection.execute(sql)
 end
 
-# reviews: NOTHING TO SEED
+# reviews: test data
+ActiveRecord::Base.transaction do
+  #       667, 253
+  Review.create(
+      :username => 'jim',
+      :movie_id => '667',
+      :rating => 5,
+      :comment => 'Great Scorsese film!',
+  )
+  Review.create(
+      :username => 'jimbo',
+      :movie_id => '667',
+      :rating => 4,
+      :comment => 'Awesome',
+  )
+  Review.create(
+      :username => 'jim',
+      :movie_id => '253',
+      :rating => 5,
+      :comment => 'Hilarious!',
+  )
+  Review.create(
+      :username => 'jimbo',
+      :movie_id => '253',
+      :rating => 3,
+      :comment => 'Pretty funny',
+  )
+end
