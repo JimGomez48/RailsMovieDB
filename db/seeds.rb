@@ -39,6 +39,7 @@ ActiveRecord::Base.transaction do
   )
 end
 
+
 # mpaa_ratings
 G     = 'G'
 PG    = 'PG'
@@ -65,6 +66,7 @@ ActiveRecord::Base.transaction do
   MpaaRating.create(:id => mpaa_ratings_hash[SURR], :value => SURR)
 end
 
+
 # movies
 ActiveRecord::Base.transaction do
   sql = "
@@ -77,6 +79,7 @@ ActiveRecord::Base.transaction do
   "
   connection.execute(sql)
 end
+
 
 # actors
 ActiveRecord::Base.transaction do
@@ -105,6 +108,7 @@ ActiveRecord::Base.transaction do
   connection.execute(sql)
 end
 
+
 # directors
 ActiveRecord::Base.transaction do
   sql = "
@@ -117,6 +121,7 @@ ActiveRecord::Base.transaction do
   "
   connection.execute(sql)
 end
+
 
 # genres
 ACTION      = 'Action'
@@ -183,23 +188,44 @@ ActiveRecord::Base.transaction do
   Genre.create(:id => genre_hash[WESTERN], :value => WESTERN)
 end
 
+
 # movie_actors
 ActiveRecord::Base.transaction do
   quote_pattern = /'/
   inserts = []
   CSV.foreach("#{seed_path}/movieactor1.csv") do |row|
-    id, mid, aid, role = row
+    mid, aid = row
     role = role.gsub(quote_pattern){ %q('') } if quote_pattern.match(role)
-    inserts.push("(#{mid}, #{aid}, '#{role}')")
+    inserts.push("(#{mid}, #{aid})")
   end
   CSV.foreach("#{seed_path}/movieactor2.csv") do |row|
-    id, mid, aid, role = row
+    mid, aid = row
     role = role.gsub(quote_pattern){ %q('') } if quote_pattern.match(role)
-    inserts.push("(#{mid}, #{aid}, '#{role}')")
+    inserts.push("(#{mid}, #{aid})")
   end
-  sql = "INSERT INTO movie_actors (movie_id, actor_id, role) VALUES #{inserts.join(', ')};"
+  sql = "INSERT INTO movie_actors (movie_id, actor_id) VALUES #{inserts.join(', ')};"
   connection.execute(sql)
 end
+
+
+# movie_actor_roles
+ActiveRecord::Base.transaction do
+  quote_pattern = /'/
+  inserts = []
+  CSV.foreach("#{seed_path}/movieactorrole1.csv") do |row|
+    movie_actor_id, role = row
+    role = role.gsub(quote_pattern){ %q('') } if quote_pattern.match(role)
+    inserts.push("(#{movie_actor_id}, '#{role}')")
+  end
+  CSV.foreach("#{seed_path}/movieactorrole2.csv") do |row|
+    movie_actor_id, role = row
+    role = role.gsub(quote_pattern){ %q('') } if quote_pattern.match(role)
+    inserts.push("(#{movie_actor_id}, '#{role}')")
+  end
+  sql = "INSERT INTO movie_actor_roles (movie_actor_id, role) VALUES #{inserts.join(', ')};"
+  connection.execute(sql)
+end
+
 
 # movie_directors
 ActiveRecord::Base.transaction do
@@ -212,6 +238,7 @@ ActiveRecord::Base.transaction do
   connection.execute(sql)
 end
 
+
 # movie_genres
 ActiveRecord::Base.transaction do
   inserts = []
@@ -223,6 +250,7 @@ ActiveRecord::Base.transaction do
   sql = "INSERT INTO movie_genres (movie_id, genre_id) VALUES #{inserts.join(', ')};"
   connection.execute(sql)
 end
+
 
 # reviews
 ActiveRecord::Base.transaction do
