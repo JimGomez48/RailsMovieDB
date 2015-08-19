@@ -11,7 +11,7 @@ module MoviesHelper
         return image_tag('mpaa-icon_r.svg.png', height: height)
       when 'NC-17'
         return image_tag('mpaa-icon_nc-17.svg.png', height: height)
-      when 'surrendere'
+      when 'surrendered'
         return '<em>Rating surrendered</em>'.html_safe
     end
   end

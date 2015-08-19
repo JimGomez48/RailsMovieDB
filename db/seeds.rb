@@ -203,7 +203,7 @@ end
 ActiveRecord::Base.transaction do
   Review.create(
       # :user_id => User.where(:username => 'jimbo1').select(:id),
-      :user_id => 1,
+      :user_id => 2,
       :movie_id => '667',
       :rating => 5,
       :comment => 'Great Scorsese film!',

@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20150819072453) do
   create_table "movies", force: :cascade do |t|
     t.string  "title",       limit: 100, null: false
     t.integer "year"
-    t.string  "mpaa_rating", limit: 10,  null: false
+    t.string  "mpaa_rating", limit: 12,  null: false
     t.string  "company",     limit: 50,  null: false
   end
 
