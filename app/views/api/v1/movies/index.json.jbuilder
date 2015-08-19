@@ -1,5 +1,9 @@
 json_envelope(json, @status, @code) do
   json.movies @movies do |movie|
-    json.extract! movie, :id, :title, :year, :rating, :company
+    json.id movie.id
+    json.title movie.cleaned_title
+    json.year movie.year
+    json.mpaa_rating movie.mpaa_rating
+    json.company movie.company
   end
 end

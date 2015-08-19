@@ -1,21 +1,22 @@
 json_envelope(json, @status, @code) do
   json.movie do
     json.id @movie.id
-    json.title @movie.title
+    json.title @movie.cleaned_title
     json.year @movie.year
-    json.mpaa_rating @movie.rating
+    json.mpaa_rating @movie.mpaa_rating
     json.company @movie.company
   end
-  json.genres @genres do |genre|
-    json.extract! genre, :id, :name
+  json.genres @genres
+  json.directors @directors
+  json.actors @movie_actors do |movie_actor|
+    json.actor movie_actor.actor
+    json.roles movie_actor.movie_actor_roles
   end
-  json.directors do |director|
-    json.extract! director, :id, :last, :first, :dob, :dod
-  end
-  json.actors do |actor|
-    json.extract! actor, :id, :last, :first, :sex, :dob, :dod
-  end
-  json.reviews do |review|
-    json.extract! review, :id, :username, :movie_id, :rating, :comment , :created_at, :updated_at
+  json.reviews @reviews do |review|
+    json.id review.id
+    json.user review.user
+    json.rating review.rating
+    json.comment review.comment
+    json.created_at review.created_at
   end
 end
