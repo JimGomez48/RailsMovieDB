@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819072453) do
+ActiveRecord::Schema.define(version: 20150819095358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20150819072453) do
   add_index "directors", ["last", "first", "dob"], name: "index_directors_on_last_and_first_and_dob", unique: true, using: :btree
 
   create_table "genres", force: :cascade do |t|
-    t.string "name", limit: 20, null: false
+    t.string "value", limit: 20, null: false
   end
 
   create_table "movie_actor_roles", force: :cascade do |t|
@@ -74,15 +74,19 @@ ActiveRecord::Schema.define(version: 20150819072453) do
   add_index "movie_genres", ["movie_id", "genre_id"], name: "index_movie_genres_on_movie_id_and_genre_id", unique: true, using: :btree
 
   create_table "movies", force: :cascade do |t|
-    t.string  "title",       limit: 100, null: false
+    t.string  "title",          limit: 100, null: false
     t.integer "year"
-    t.string  "mpaa_rating", limit: 12,  null: false
-    t.string  "company",     limit: 50,  null: false
+    t.integer "mpaa_rating_id",             null: false
+    t.string  "company",        limit: 50,  null: false
   end
 
   add_index "movies", ["company"], name: "index_movies_on_company", using: :btree
   add_index "movies", ["title", "company"], name: "index_movies_on_title_and_company", unique: true, using: :btree
   add_index "movies", ["title", "year"], name: "index_movies_on_title_and_year", unique: true, using: :btree
+
+  create_table "mpaa_ratings", force: :cascade do |t|
+    t.string "value", limit: 12, null: false
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id",              null: false
@@ -120,6 +124,7 @@ ActiveRecord::Schema.define(version: 20150819072453) do
   add_foreign_key "movie_directors", "movies", on_delete: :cascade
   add_foreign_key "movie_genres", "genres", on_delete: :cascade
   add_foreign_key "movie_genres", "movies", on_delete: :cascade
+  add_foreign_key "movies", "mpaa_ratings"
   add_foreign_key "reviews", "movies", on_delete: :cascade
   add_foreign_key "reviews", "users", on_delete: :cascade
 end

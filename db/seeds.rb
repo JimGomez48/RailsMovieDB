@@ -39,6 +39,31 @@ ActiveRecord::Base.transaction do
   )
 end
 
+# mpaa_ratings
+G     = 'G'
+PG    = 'PG'
+PG_13 = 'PG-13'
+R     = 'R'
+NC_17 = 'NC-17'
+SURR  = 'surrendered'
+
+mpaa_ratings_hash = {
+    G     => 1,
+    PG    => 2,
+    PG_13 => 3,
+    R     => 4,
+    NC_17 => 5,
+    SURR  => 6,
+}
+
+ActiveRecord::Base.transaction do
+  MpaaRating.create(:id => mpaa_ratings_hash[G], :value => G)
+  MpaaRating.create(:id => mpaa_ratings_hash[PG], :value => PG)
+  MpaaRating.create(:id => mpaa_ratings_hash[PG_13], :value => PG_13)
+  MpaaRating.create(:id => mpaa_ratings_hash[R], :value => R)
+  MpaaRating.create(:id => mpaa_ratings_hash[NC_17], :value => NC_17)
+  MpaaRating.create(:id => mpaa_ratings_hash[SURR], :value => SURR)
+end
 
 # movies
 ActiveRecord::Base.transaction do
@@ -137,25 +162,25 @@ genre_hash = {
 }
 
 ActiveRecord::Base.transaction do
-  Genre.create(:id => genre_hash[ACTION], :name => ACTION)
-  Genre.create(:id => genre_hash[ADULT], :name => ADULT)
-  Genre.create(:id => genre_hash[ADVENTURE], :name => ADVENTURE)
-  Genre.create(:id => genre_hash[ANIMATION], :name => ANIMATION)
-  Genre.create(:id => genre_hash[CRIME], :name => CRIME)
-  Genre.create(:id => genre_hash[COMEDY], :name => COMEDY)
-  Genre.create(:id => genre_hash[DOCUMENTARY], :name => DOCUMENTARY)
-  Genre.create(:id => genre_hash[DRAMA], :name => DRAMA)
-  Genre.create(:id => genre_hash[FAMILY], :name => FAMILY)
-  Genre.create(:id => genre_hash[FANTASY], :name => FANTASY)
-  Genre.create(:id => genre_hash[HORROR], :name => HORROR)
-  Genre.create(:id => genre_hash[MUSICAL], :name => MUSICAL)
-  Genre.create(:id => genre_hash[MYSTERY], :name => MYSTERY)
-  Genre.create(:id => genre_hash[ROMANCE], :name => ROMANCE)
-  Genre.create(:id => genre_hash[SCI_FI], :name => SCI_FI)
-  Genre.create(:id => genre_hash[SHORT], :name => SHORT)
-  Genre.create(:id => genre_hash[THRILLER], :name => THRILLER)
-  Genre.create(:id => genre_hash[WAR], :name => WAR)
-  Genre.create(:id => genre_hash[WESTERN], :name => WESTERN)
+  Genre.create(:id => genre_hash[ACTION], :value => ACTION)
+  Genre.create(:id => genre_hash[ADULT], :value => ADULT)
+  Genre.create(:id => genre_hash[ADVENTURE], :value => ADVENTURE)
+  Genre.create(:id => genre_hash[ANIMATION], :value => ANIMATION)
+  Genre.create(:id => genre_hash[CRIME], :value => CRIME)
+  Genre.create(:id => genre_hash[COMEDY], :value => COMEDY)
+  Genre.create(:id => genre_hash[DOCUMENTARY], :value => DOCUMENTARY)
+  Genre.create(:id => genre_hash[DRAMA], :value => DRAMA)
+  Genre.create(:id => genre_hash[FAMILY], :value => FAMILY)
+  Genre.create(:id => genre_hash[FANTASY], :value => FANTASY)
+  Genre.create(:id => genre_hash[HORROR], :value => HORROR)
+  Genre.create(:id => genre_hash[MUSICAL], :value => MUSICAL)
+  Genre.create(:id => genre_hash[MYSTERY], :value => MYSTERY)
+  Genre.create(:id => genre_hash[ROMANCE], :value => ROMANCE)
+  Genre.create(:id => genre_hash[SCI_FI], :value => SCI_FI)
+  Genre.create(:id => genre_hash[SHORT], :value => SHORT)
+  Genre.create(:id => genre_hash[THRILLER], :value => THRILLER)
+  Genre.create(:id => genre_hash[WAR], :value => WAR)
+  Genre.create(:id => genre_hash[WESTERN], :value => WESTERN)
 end
 
 # movie_actors
