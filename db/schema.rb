@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819222218) do
+ActiveRecord::Schema.define(version: 20150820042441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,11 +90,8 @@ ActiveRecord::Schema.define(version: 20150819222218) do
     t.string  "title",          limit: 100, null: false
     t.integer "year"
     t.integer "mpaa_rating_id",             null: false
-    t.string  "company",        limit: 50,  null: false
   end
 
-  add_index "movies", ["company"], name: "index_movies_on_company", using: :btree
-  add_index "movies", ["title", "company"], name: "index_movies_on_title_and_company", unique: true, using: :btree
   add_index "movies", ["title", "year"], name: "index_movies_on_title_and_year", unique: true, using: :btree
 
   create_table "mpaa_ratings", force: :cascade do |t|

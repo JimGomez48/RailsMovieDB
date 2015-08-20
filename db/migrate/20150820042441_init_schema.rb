@@ -78,11 +78,8 @@ class InitSchema < ActiveRecord::Migration
       t.string  "title",          limit: 100, null: false
       t.integer "year"
       t.integer "mpaa_rating_id",             null: false
-      t.string  "company",        limit: 50,  null: false
     end
     
-    add_index "movies", ["company"], name: "index_movies_on_company", using: :btree
-    add_index "movies", ["title", "company"], name: "index_movies_on_title_and_company", unique: true, using: :btree
     add_index "movies", ["title", "year"], name: "index_movies_on_title_and_year", unique: true, using: :btree
     
     create_table "mpaa_ratings", force: :cascade do |t|

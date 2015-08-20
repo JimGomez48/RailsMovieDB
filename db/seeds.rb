@@ -123,6 +123,20 @@ ActiveRecord::Base.transaction do
 end
 
 
+# companies
+ActiveRecord::Base.transaction do
+  sql = "
+    BEGIN;
+      COPY companies
+      FROM '#{seed_path}/company.csv'
+      DELIMITER ',' CSV
+      NULL '\\N';
+    END;
+  "
+  connection.execute(sql)
+end
+
+
 # genres
 ACTION      = 'Action'
 ADULT       = 'Adult'
@@ -248,6 +262,18 @@ ActiveRecord::Base.transaction do
     inserts.push("(#{mid}, #{genre_id})")
   end
   sql = "INSERT INTO movie_genres (movie_id, genre_id) VALUES #{inserts.join(', ')};"
+  connection.execute(sql)
+end
+
+
+# movie_companies
+ActiveRecord::Base.transaction do
+  inserts = []
+  CSV.foreach("#{seed_path}/moviecompany.csv") do |row|
+    mid, cid = row
+    inserts.push("(#{mid}, #{cid})")
+  end
+  sql = "INSERT INTO movie_companies (movie_id, company_id) VALUES #{inserts.join(', ')};"
   connection.execute(sql)
 end
 
