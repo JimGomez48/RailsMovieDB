@@ -4,6 +4,6 @@ json_envelope(json, @status, @code) do
     json.title movie.cleaned_title
     json.year movie.year
     json.mpaa_rating movie.mpaa_rating
-    json.company movie.company
+    json.companies movie.companies
   end
 end

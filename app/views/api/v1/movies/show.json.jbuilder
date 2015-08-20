@@ -4,14 +4,18 @@ json_envelope(json, @status, @code) do
     json.title @movie.cleaned_title
     json.year @movie.year
     json.mpaa_rating @movie.mpaa_rating
-    json.company @movie.company
+    json.companies @movie.companies
   end
+
   json.genres @genres
+
   json.directors @directors
+
   json.actors @movie_actors do |movie_actor|
     json.actor movie_actor.actor
     json.roles movie_actor.movie_actor_roles
   end
+
   json.reviews @reviews do |review|
     json.id review.id
     json.user review.user

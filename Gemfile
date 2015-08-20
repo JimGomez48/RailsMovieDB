@@ -36,7 +36,8 @@ gem 'crack'
 gem 'json'
 # faster csv parsing than csv
 gem 'fastercsv'
-
+# lighter weight controllers for API-only apps
+gem 'rails-api'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
