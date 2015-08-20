@@ -1,12 +1,14 @@
 class Movie < ActiveRecord::Base
   has_many :movie_actors
-  has_many :actors, :through => :movie_actors
+  has_many :actors, through: :movie_actors
   has_many :movie_directors
-  has_many :directors, :through => :movie_directors
+  has_many :directors, through: :movie_directors
   has_many :movie_genres
-  has_many :genres, :through => :movie_genres
+  has_many :genres, through: :movie_genres
   has_many :reviews
   belongs_to :mpaa_rating
+  has_many :movie_companies
+  has_many :companies, through: :movie_companies
 
   ## If title ends with ', The', remove it from the end and prepend 'The ' to the title
   def cleaned_title

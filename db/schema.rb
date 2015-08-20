@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819110241) do
+ActiveRecord::Schema.define(version: 20150819222218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20150819110241) do
   add_index "actors", ["first"], name: "index_actors_on_first", using: :btree
   add_index "actors", ["last", "first", "dob"], name: "index_actors_on_last_and_first_and_dob", unique: true, using: :btree
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name", limit: 100, null: false
+  end
+
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
+
   create_table "directors", force: :cascade do |t|
     t.string "last",  limit: 50, null: false
     t.string "first", limit: 50, null: false
@@ -38,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150819110241) do
   add_index "directors", ["last", "first", "dob"], name: "index_directors_on_last_and_first_and_dob", unique: true, using: :btree
 
   create_table "genres", force: :cascade do |t|
-    t.string "value", limit: 20, null: false
+    t.string "value", limit: 50, null: false
   end
 
   create_table "movie_actor_roles", force: :cascade do |t|
@@ -55,6 +61,14 @@ ActiveRecord::Schema.define(version: 20150819110241) do
 
   add_index "movie_actors", ["actor_id"], name: "index_movie_actors_on_actor_id", using: :btree
   add_index "movie_actors", ["movie_id", "actor_id"], name: "index_movie_actors_on_movie_id_and_actor_id", unique: true, using: :btree
+
+  create_table "movie_companies", force: :cascade do |t|
+    t.integer "movie_id",   null: false
+    t.integer "company_id", null: false
+  end
+
+  add_index "movie_companies", ["company_id"], name: "index_movie_companies_on_company_id", using: :btree
+  add_index "movie_companies", ["movie_id", "company_id"], name: "index_movie_companies_on_movie_id_and_company_id", unique: true, using: :btree
 
   create_table "movie_directors", force: :cascade do |t|
     t.integer "movie_id",    null: false
@@ -119,6 +133,8 @@ ActiveRecord::Schema.define(version: 20150819110241) do
   add_foreign_key "movie_actor_roles", "movie_actors", on_delete: :cascade
   add_foreign_key "movie_actors", "actors", on_delete: :cascade
   add_foreign_key "movie_actors", "movies", on_delete: :cascade
+  add_foreign_key "movie_companies", "companies"
+  add_foreign_key "movie_companies", "movies"
   add_foreign_key "movie_directors", "directors", on_delete: :cascade
   add_foreign_key "movie_directors", "movies", on_delete: :cascade
   add_foreign_key "movie_genres", "genres", on_delete: :cascade
