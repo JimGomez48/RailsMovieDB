@@ -1,8 +1,6 @@
 class MoviesController < ResourceBaseController
   def index
-    @movies = Movie.all.order(:title, :year)
-    @status = SUCCESS
-    @code = nil
+    @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
   end
 
   def new
@@ -23,8 +21,7 @@ class MoviesController < ResourceBaseController
     @directors = @movie.directors.order(:last, :first)
     @movie_actors = MovieActor.where(:movie_id => params[:id])
     @reviews = Review.where(:movie_id => params[:id])
-    @status = SUCCESS
-    @code = nil
+    @avg_rating = @avg_rating = @reviews.average(:rating)
   end
 
   def update

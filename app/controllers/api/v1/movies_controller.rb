@@ -1,6 +1,10 @@
 class Api::V1::MoviesController < Api::V1::ApiController
   def index
-    @movies = Movie.all.order(:title, :year)
+    if params[:page].nil?
+      @movies = Movie.all.order(:title, :year)
+    else
+      @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
+    end
     @status = SUCCESS
     @code = nil
   end
@@ -23,6 +27,7 @@ class Api::V1::MoviesController < Api::V1::ApiController
     @directors = @movie.directors.order(:last, :first)
     @movie_actors = MovieActor.where(:movie_id => params[:id])
     @reviews = Review.where(:movie_id => params[:id])
+    @avg_rating = @avg_rating = @reviews.average(:rating)
     @status = SUCCESS
     @code = nil
   end

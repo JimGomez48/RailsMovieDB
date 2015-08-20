@@ -21,9 +21,9 @@
                       <div class="media-body">
                         <h3 class="media-heading text-primary text-capitalize"><%= movie.cleaned_title %></h3>
                         <strong>Rating:</strong>
-                        <%= mpaa_rating_icon(movie.rating, height=14) %>
+                        <%= mpaa_rating_icon(movie.mpaa_rating_id, height=14) %>
                         </br>
-                        <strong>Company:</strong> <%= movie.company %>
+                        <strong>Company:</strong> <%= list_companies movie.companies %>
                         </br>
                         <strong>Year:</strong> <%= movie.year %>
                       </div>

@@ -7,9 +7,12 @@ module Api
       # For APIs, you may want to use :null_session instead.
       # protect_from_forgery with: :null_session
 
+      # status codes
       SUCCESS = 'success'
       FAIL = 'fail'
       ERROR = 'error'
+      # pagination
+      RESULTS_PER_PAGE = 20
 
       private
       def exception_to_error_code(exception)

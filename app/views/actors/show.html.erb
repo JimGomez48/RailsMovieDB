@@ -34,23 +34,23 @@
       <!--Movies-->
       <div class="list-group-item">
         <h3 class="list-group-item-heading text-capitalize">Filmography</h3>
-        <% if @filmography.empty? %>
+        <% if @movie_entries.empty? %>
             <h4 class="text-muted"><em>No movies to display</em></h4>
         <% else %>
             <table class="table table-condensed table-striped no-border">
               <th class="text-info">Movie Title</th>
               <th class="text-info">Role</th>
               <th class="text-info">Year</th>
-              <% @filmography.each do |movie_role| %>
+              <% @movie_entries.each do |movie_entry| %>
                   <tr>
                     <td>
-                      <%= link_to movie_role, class: 'text-primary text-capitalize' do %>
+                      <%= link_to movie_entry[:movie], class: 'text-primary text-capitalize' do %>
                           <%= image_tag 'default_movie.png', height: 36 %>
-                          <%= movie_role.cleaned_title %>
+                          <%= movie_entry[:movie].cleaned_title %>
                       <% end %>
                     </td>
-                    <td><%= movie_role.role %></td>
-                    <td><%= movie_role.year %></td>
+                    <td><%= list_roles movie_entry[:roles] %></td>
+                    <td><%= movie_entry[:movie].year %></td>
                   </tr>
               <% end %>
             </table>

@@ -18,11 +18,11 @@
               </tr>
               <tr>
                 <td><h4><strong>Company</strong></h4></td>
-                <td><h4><%= @movie.company %></h4></td>
+                <td><h4><%= list_companies @movie.companies %></h4></td>
               </tr>
               <tr>
                 <td><h4><strong>MPAA Rating</strong></h4></td>
-                <td><h4><%= mpaa_rating_icon(@movie.rating, height=20) %></h4></td>
+                <td><h4><%= mpaa_rating_icon(@movie.mpaa_rating_id, height=20) %></h4></td>
               </tr>
               <tr>
                 <td><h4><strong>Avg. User Rating</strong></h4></td>
@@ -77,16 +77,16 @@
             <table class="table table-condensed table-striped no-border">
               <th class="text-info">Actor</th>
               <th class="text-info">Role</th>
-              <% @movie_actors.each do |actor| %>
+              <% @movie_actors.each do |movie_actor| %>
                   <tr>
                     <td>
-                      <%= link_to actor, class: 'text-primary text-capitalize' do %>
+                      <%= link_to movie_actor.actor, class: 'text-primary text-capitalize' do %>
                           <%= image_tag 'default_person.png', height: 24, class: 'img-circle' %>
-                          <%= "#{actor.first} #{actor.last}" %>
+                          <%= "#{movie_actor.actor.first} #{movie_actor.actor.last}" %>
                       <% end %>
                     </td>
                     <td>
-                      <%= actor.role %>
+                      <%= list_roles movie_actor.movie_actor_roles %>
                     </td>
                   </tr>
               <% end %>

@@ -1,7 +1,7 @@
 class MovieActor < ActiveRecord::Base
-  belongs_to :movie
-  belongs_to :actor
-  has_many :movie_actor_roles
+  belongs_to :movie, -> {order 'title, year'}
+  belongs_to :actor, -> {order 'last, first, dob'}
+  has_many :movie_actor_roles, -> {order 'role'}
 
   def as_json(options={})
     super(

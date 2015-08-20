@@ -23,4 +23,6 @@ json_envelope(json, @status, @code) do
     json.comment review.comment
     json.created_at review.created_at
   end
+
+  json.avg_rating @avg_rating
 end

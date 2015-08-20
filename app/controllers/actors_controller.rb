@@ -19,10 +19,13 @@ class ActorsController < ResourceBaseController
 
   def show
     @actor = Actor.find(params[:id])
-    @filmography = Movie.joins(:movie_actors)
-                       .where('movie_actors.actor_id' => params[:id])
-                       .select('movies.id', 'movies.title', 'movies.year', 'movie_actors.role')
-                       .order('movies.year DESC', 'movies.title')
+    @movie_entries = []
+    movie_actors = MovieActor.where(:actor_id => params[:id])
+    movie_actors.each do |movie_actor|
+      @movie_entries.append({:movie => movie_actor.movie, :roles => movie_actor.movie_actor_roles})
+    end
+    # sort movies_actors by year DESC, title ASC
+    @movie_entries = @movie_entries.sort_by { |a| a[:movie].year }.reverse
   end
 
   def update

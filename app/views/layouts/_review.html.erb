@@ -4,7 +4,7 @@
       <%= image_tag 'default_person.png', class: 'media-object', width: 56 %>
     </div>
     <div class="media-body">
-      <h4 class="media-heading text-capitalize"><%= review.username %></h4>
+      <h4 class="media-heading text-capitalize"><%= review.user.username %></h4>
       <small><%= pretty_print_datetime_abbrev(review.created_at.localtime) %></small>
       <input
       type="number"
