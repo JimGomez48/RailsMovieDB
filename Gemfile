@@ -38,6 +38,10 @@ gem 'json'
 gem 'fastercsv'
 # lighter weight controllers for API-only apps
 gem 'rails-api'
+# frontend package manager
+gem 'bower-rails'
+# easier angular templates and template caching
+gem 'angular-rails-templates'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

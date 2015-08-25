@@ -12,8 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require bootstrap
+//= require bootstrap-star-rating
+//= require angular
+//= require angular-animate
+//= require angular-ui-router
+//= require angular-rails-templates
+//= require restangular
 //= require_tree .
-//= require bootstrap-sprockets
-//= require angular.min
-//= require star-rating.min
+//= require_tree ../templates
