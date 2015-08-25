@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="">
 <head>
   <title>RailsMovieDB</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -20,6 +20,8 @@
   <%= render 'layouts/navbar' %>
 
   <div id="main" class="jumbotron text-center">
+    <h1><%= yield :page_header %></h1>
+
     <%= content_for?(:main) ? yield(:main) : yield %>
   </div>
 

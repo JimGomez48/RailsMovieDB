@@ -1,11 +1,11 @@
 <nav>
   <%= will_paginate items,
                     renderer: BootstrapPagination::Rails,
-                    previous_label: '← Prev',
-                    next_label: 'Next →',
-                    # previous_label: '&laquo Prev ',
-                    # next_label: 'Next &raquo',
-                    inner_window: 3,
+                    # previous_label: '← Prev',
+                    # next_label: 'Next →',
+                    previous_label: '&laquo',
+                    next_label: '&raquo',
+                    inner_window: 2,
                     outer_window: 0
   %>
 </nav>
