@@ -2,3 +2,382 @@
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 @import "bootstrap-star-rating/css/star-rating.min";
+
+html, body {
+  height: 100%;
+  min-width: 600px;
+  /* will appear as footer bg-color */
+  background-color: #424242;
+}
+
+#master_container {
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -200px;
+  /* Pad bottom by footer height */
+  /*padding: 0 0 200px;*/
+
+  /* push full bottom */
+  position: relative;
+}
+
+#navbar {
+  /*NONE*/
+}
+
+#main {
+  /*text-align: center;*/
+}
+
+#footer {
+  width: 100%;
+  height: auto;
+  padding-bottom: 40px;
+
+  /* push full bottom */
+  /*position: absolute;*/
+  /*bottom: 0;*/
+  /*left: 0;*/
+
+  h4 {
+    color: whitesmoke;
+  }
+
+  p, a {
+    color: #A0A0A0;
+  }
+}
+
+.errorlist {
+  color: #cd5350
+}
+
+a.errorlist:hover {
+  color: #843534
+}
+
+.warning-icon {
+  color: goldenrod;
+}
+
+.warning-icon:hover {
+  color: gold;
+}
+
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  code {
+    border-radius: 3px;
+  }
+
+  + .bs-callout {
+    margin-top: -5px;
+  }
+}
+
+.bs-callout-default {
+  border-left-color: #777;
+  h4 {
+    color: #777;
+  }
+}
+
+.bs-callout-primary {
+  border-left-color: #428bca;
+  h4 {
+    color: #428bca;
+  }
+}
+
+.bs-callout-success {
+  border-left-color: #5cb85c;
+  h4 {
+    color: #5cb85c;
+  }
+}
+
+.bs-callout-danger {
+  border-left-color: #d9534f;
+  h4 {
+    color: #d9534f;
+  }
+}
+
+.bs-callout-warning {
+  border-left-color: #f0ad4e;
+  h4 {
+    color: #f0ad4e;
+  }
+}
+
+.bs-callout-info {
+  border-left-color: #5bc0de;
+  h4 {
+    color: #5bc0de;
+  }
+}
+
+.table.no-border tr td, .table.no-border tr th {
+  border-width: 0;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: white;
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+  background-color: #F5F5F5;
+}
+
+.panel-dark {
+  border-color: #B4B4B4;
+
+  > .panel-heading {
+    color: white;
+    background-image: none;
+    background-color: #232323;
+    border-color: #232323;
+  }
+}
+
+//.panel-dark > .panel-heading {
+//  color: white;
+//  background-image: none;
+//  background-color: #232323;
+//  border-color: #232323;
+//}
+
+.panel.has-error {
+  border-color: #a94442;
+}
+
+//-------------- BUTTONS ----------------
+
+.btn-panel {
+  $color_dark: #232323;
+  $color_dark_light: #343434;
+  $color_info: #31708f;
+  $color_info_light: #d9edf7;
+  $color_primary: #337ab7;
+  $color_primary_light: ghostwhite;
+  $color_success: #3c763d;
+  $color_success_light: #dff0d8;
+  $color_warning: #8a6d3b;
+  $color_warning_light: #fcf8e3;
+  $color_danger: #a94442;
+  $color_danger_light: #f2dede;
+
+  color: ghostwhite;
+  background: transparent;
+  border: none;
+
+  &:hover {
+    color: ghostwhite;
+  }
+
+  &.btn-dark {
+    &:hover, &:focus, &:active {
+      color: ghostwhite;
+      background: $color_dark_light;
+    }
+  }
+
+  &.btn-info {
+    color: $color_info;
+    &:hover, &:focus, &:active {
+      color: $color_info_light;
+      background: $color_info;
+    }
+  }
+
+  &.btn-primary {
+
+  }
+
+  &.btn-success {
+    color: $color_success;
+    &:hover, &:focus, &:active {
+      color: $color_success_light;
+      background: $color_success;
+    }
+  }
+
+  &.btn-warning {
+    color: $color_warning;
+    &:hover, &:focus, &:active {
+      color: $color_warning_light;
+      background: $color_warning;
+    }
+  }
+
+  &.btn-danger {
+    color: $color_danger;
+    &:hover, &:focus, &:active {
+      color: $color_danger_light;
+      background: $color_danger;
+    }
+  }
+}
+
+.btn-ghost {
+  $color_light: ghostwhite;
+  $color_default: #232323;
+  $color_default_light: #404040;
+  $color_info: #5bc0de;
+  $color_primary: #337ab7;
+  $color_success: #5cb85c;
+  $color_warning: #f0ad4e;
+  $color_danger: #d9534f;
+
+  background: transparent;
+
+  &.btn-bold {
+    border-width: 2px;
+    font-weight: bold;
+  }
+
+  &.btn-default {
+    color: $color_default;
+    border-color: $color_default;
+
+    &:hover, &:focus, &:active {
+      color: ghostwhite;
+      border-color: $color_default;
+      background: $color_default_light;
+    }
+
+    &:active {
+      background: $color_default;
+    }
+  }
+
+  &.btn-white {
+    color: ghostwhite;
+    border-color: ghostwhite;
+
+    &:hover, &:focus, &:active {
+      color: #404040;
+      border-color: ghostwhite;
+      background: ghostwhite;
+    }
+
+    &:active {
+      background: #e3e3ea;
+    }
+  }
+
+  &.btn-primary {
+    color: #337ab7;
+    border-color: #337ab7;
+
+    &:hover, &:focus, &:active {
+      color: ghostwhite;
+      border-color: #337ab7;
+      background: #337ab7;
+    }
+
+    &:active {
+      background: #296291;
+    }
+  }
+
+  &.btn-info {
+    color: #5bc0de;
+    border-color: #5bc0de;
+
+    &:hover, &:focus, &:active {
+      color: ghostwhite;
+      border-color: #5bc0de;
+      background: #5bc0de;
+    }
+  }
+
+  &.btn-success {
+    color: #5cb85c;
+    border-color: #5cb85c;
+
+    &:hover, &:focus, &:active {
+      color: ghostwhite;
+      border-color: #5cb85c;
+      background: #5cb85c;
+    }
+
+    &:active {
+      background: #50a050;
+    }
+  }
+
+  &.btn-warning{
+    color: #f0ad4e;
+    border-color: #f0ad4e;
+
+    &:hover, &:focus, &:active {
+      color: ghostwhite;
+      border-color: #f0ad4e;
+      background: #f0ad4e;
+    }
+
+    &:active {
+      background: #e0a149;
+    }
+  }
+
+  &.btn-danger {
+    color: #d9534f;
+    border-color: #d9534f;
+
+    &:hover, &:focus, &:active {
+      color: ghostwhite;
+      border-color: #d9534f;
+      background: #d9534f;
+    }
+
+    &:active {
+      background: #c34a47;
+    }
+  }
+}
+
+.btn-circle {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 16px;
+
+  &.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+  }
+
+  &.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+  }
+}

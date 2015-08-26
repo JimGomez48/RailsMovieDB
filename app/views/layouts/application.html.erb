@@ -12,14 +12,13 @@
 
 <body ng-app="movieDbApp">
 <div id="master-container">
-  <!-- navbar -->
+  <section ng-include="'ng-app/partials/_navbar.html'"></section>
 
   <div id="main" class="jumbotron text-center">
-    <h1>application header</h1>
-    <div class="container" ui-view="home"></div>
+    <%= yield %>
   </div>
 
-  <!-- footer -->
+  <section ng-include="'ng-app/partials/_footer.html'"></section>
 </div>
 </body>
 </html>
