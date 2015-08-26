@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   # static routes for serving angular apps
-  get '/home' => 'home#index',      as: :home_path
+  get '*path' => 'home#index', as: :home_path
 
   # api resource routes
   namespace :api, defaults: {format: 'json'} do

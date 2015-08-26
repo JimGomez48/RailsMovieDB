@@ -2,6 +2,7 @@
   <dictionary name="james">
     <words>
       <w>callout</w>
+      <w>dismissable</w>
       <w>dropdown</w>
       <w>errorlist</w>
       <w>fastercsv</w>

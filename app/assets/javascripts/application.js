@@ -13,8 +13,10 @@
 //= require angular
 //= require angular-rails-templates
 //= require angular-ui-router
+//= require angular-animate
+//= require restangular
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-star-rating
-//= require_tree .
+//= require_tree ./ng-app

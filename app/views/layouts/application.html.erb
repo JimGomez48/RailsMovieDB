@@ -6,19 +6,18 @@
 
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
-
   <%= csrf_meta_tags %>
 </head>
 
 <body ng-app="movieDbApp">
 <div id="master-container">
-  <section ng-include="'ng-app/partials/_navbar.html'"></section>
+  <navbar-section></navbar-section>
 
   <div id="main" class="jumbotron text-center">
     <%= yield %>
   </div>
 
-  <section ng-include="'ng-app/partials/_footer.html'"></section>
+  <footer-section></footer-section>
 </div>
 </body>
 </html>
