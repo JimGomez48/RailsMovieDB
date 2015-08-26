@@ -1,31 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsMovieDB</title>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <title>UiRouterTutorial2</title>
 
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
 
-  <!--Initialize tooltips-->
-  <script>
-      $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-      })
-  </script>
   <%= csrf_meta_tags %>
 </head>
 
-<body ng-app="movieDbApp">
-<div id="master_container">
-  <%= render 'layouts/navbar' %>
+<body ng-app="myApp">
 
-  <div id="main" class="jumbotron text-center">
-    <h1><%= yield :page_header %></h1>
+<%= yield %>
 
-    <%= content_for?(:main) ? yield(:main) : yield %>
-  </div>
-
-  <%= render 'layouts/footer' %>
-</div>
 </body>
 </html>

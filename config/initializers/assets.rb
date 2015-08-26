@@ -4,9 +4,10 @@
 Rails.application.config.assets.version = '1.0'
 
 # Add additional assets to the asset load path
-# Rails.application.config.assets.paths << Emoji.images_path
-Rails.application.config.assets.precompile += %w( star-rating.mins.scss )
+BOWER_ASSET_PATH = Rails.root.join('vendor', 'assets', 'bower_components')
+BOOTSTRAP_PATH = Rails.root.join(BOWER_ASSET_PATH, 'bootstrap-sass-official', 'assets')
+Rails.application.config.assets.paths << Rails.root.join(BOWER_ASSET_PATH)
 
 # Precompile additional assets.
 # application.js, application.scss, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+# Rails.application.config.assets.precompile += [/.*\.js/, /.*\.css/, /.*\.eot/, /.*\.svg/, /.*\.ttf/, /.*\.woff/, /.*\.woff2/]

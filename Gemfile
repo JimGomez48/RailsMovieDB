@@ -5,8 +5,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# bootstrap sass
-gem 'bootstrap-sass'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -24,12 +22,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 # migrations squasher
 gem 'squasher'
 # pagination gem
 gem 'will_paginate'
 # prettier pagination with bootstrap
-gem 'will_paginate-bootstrap'
+# gem 'will_paginate-bootstrap'
 # Use crack to parse xml and json and conversions
 gem 'crack'
 # Use json to convert to json
@@ -38,6 +37,7 @@ gem 'json'
 gem 'fastercsv'
 # lighter weight controllers for API-only apps
 gem 'rails-api'
+
 # frontend package manager
 gem 'bower-rails'
 # easier angular templates and template caching

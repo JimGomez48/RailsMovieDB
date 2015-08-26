@@ -1,19 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#index'
-
-  resources :movies do
-    resources :actors
-    resources :directors
-    resources :genres, only: [:index]
-    resources :reviews, only: [:index, :show, :new, :create, :edit, :update]
-  end
-  resources :actors do
-    resources :movies
-  end
-  resources :directors do
-    resources :movies
-  end
-  resources :reviews, only: [:index, :show, :new, :create, :edit, :update]
+  root 'application#index'
+  get "*path" => "application#index"
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
