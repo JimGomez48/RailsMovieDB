@@ -1,50 +1,27 @@
 angular
-    .module('myApp', [
-        'ngAnimate',
-        'ui.router',
-        'templates'
-    ])
-    .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-        console.log('CONFIGURING APP MODULE')
-        /**
-         * Route and States
-         */
-        $stateProvider
-            .state('home', {
-                url: '/',
-                templateUrl: 'home.html',
-                controller: 'HomeCtrl'
-            })
-            // an abstract state that just serves as a
-            // parent for the below child states
-            .state('dashboard', {
-                abstract: true,
-                url: '/dashboard',
-                templateUrl: 'dashboard/layout.html'
-            })
-            // the default route when someone hits dashboard
-            .state('dashboard.one', {
-                url: '',
-                templateUrl: 'dashboard/one.html'
-            })
-            // this is /dashboard/two
-            .state('dashboard.two', {
-                url: '/two',
-                templateUrl: 'dashboard/two.html'
-            })
-            // this is /dashboard/three
-            .state('dashboard.three', {
-                url: '/three',
-                templateUrl: 'dashboard/three.html'
+    .module('movieDbApp', ['ui.router', 'templates'])
+    .config([
+        '$stateProvider',
+        '$urlRouterProvider',
+        '$locationProvider',
+        function ($stateProvider, $urlRouterProvider, $locationProvider) {
+            console.log('CONFIGURING APP MODULE');
+
+            $stateProvider
+                .state('home', {
+                    url: '/',
+                    views: {'home': {
+                        templateUrl: 'ng-app/home/_home.html',
+                        controller: 'HomeCtrl'
+                    }},
+
+                });
+
+            $urlRouterProvider.otherwise('/');
+
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
             });
-
-        // default fallback route
-        $urlRouterProvider.otherwise('/');
-
-        // enable HTML5 mode for SEO
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
-
-    });
+        }
+    ]);
