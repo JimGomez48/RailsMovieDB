@@ -16,7 +16,12 @@
                         controller: 'HomeCtrl'
                     })
                     .state('movies', {
+                        abstract: true,
                         url: '/movies',
+                        templateUrl: 'ng-app/shared/browse_list/_browse_list.html',
+                    })
+                    .state('movies.list', {
+                        url: '/list',
                         templateUrl: 'ng-app/components/movies/movies.html',
                         controller: 'MoviesCtrl'
                     })
