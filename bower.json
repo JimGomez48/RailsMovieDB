@@ -9,8 +9,9 @@
       "angular": "latest",
       "angular-ui-router": "latest",
       "angular-animate": "latest",
-      "bootstrap-sass-official": "latest",
+      "bootstrap-sass": "latest",
       "bootstrap-star-rating": "latest",
+      "angular-bootstrap": "latest",
       "restangular": "latest"
     }
   }

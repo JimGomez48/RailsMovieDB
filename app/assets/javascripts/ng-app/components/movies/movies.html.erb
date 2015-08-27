@@ -1,0 +1,26 @@
+<!-- Panel title content -->
+<!--<span class="glyphicon glyphicon-film"></span> Movies-->
+
+<!--<div class="list-group">-->
+  <!-- if no movies -->
+  <!--<ul class="list-group-item"><h4><em>No movies to display</em></h4></ul>-->
+  <a href="" class="list-group-item" ng-repeat="movie in movies">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="media-left">
+          <!--<%= image_tag 'default_movie.png', height: 128 %>-->
+          <img ng-src="{{movie.img_url}}" height="128"/>
+        </div>
+        <div class="media-body">
+          <h3 class="media-heading text-primary text-capitalize">{{ movie.title }}</h3>
+          <strong>Rating:</strong> {{ movie.rating }}
+          </br>
+          <strong>Company:</strong> {{ movie.company }}
+          </br>
+          <strong>Year:</strong> {{ movie.year }}
+        </div>
+      </div>
+    </div>
+  </a>
+
+<!--</div>-->

@@ -1,7 +1,7 @@
 (function () {
 
     var app = angular
-        .module('movieDbApp', ['ui.router', 'templates', 'ngAnimate']) //restangular
+        .module('movieDbApp', ['ui.router', 'templates', 'ngAnimate', 'ui.bootstrap']) //restangular
         .config([
             '$stateProvider',
             '$urlRouterProvider',
