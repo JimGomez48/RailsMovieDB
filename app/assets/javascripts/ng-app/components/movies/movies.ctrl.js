@@ -3,7 +3,7 @@ angular.module('movieDbApp')
         '$scope',
         function ($scope) {
             console.log('GOT TO MOVIES_CONTROLLER')
-            var movies = [
+            $scope.movies = [
                 {
                     title: 'Casino',
                     year: '1995',
@@ -26,8 +26,5 @@ angular.module('movieDbApp')
                     img_url: '/img/default_movie.png',
                 }
             ];
-
-            this.movies = movies;
-            $scope.movies = movies;
         }
     ]);

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a ui-sref="home" class="navbar-brand">
+      <a ui-sref="home" class="navbar-brand" ng-click="selectNav(-1)">
         <span class="glyphicon glyphicon-home"></span> MovieDB
       </a>
     </div>
@@ -16,11 +16,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div id="navbar-collapse" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a ui-sref="movies.list" ui-sref-active="active">Movies</a></li>
-        <li><a ui-sref="actors" ui-sref-active="active">Actors</a></li>
-        <li><a ui-sref="directors" ui-sref-active="active">Directors</a></li>
-        <li><a ui-sref="reviews" ui-sref-active="active">Reviews</a></li>
+        <li ng-repeat="item in nav_items" ng-click="selectNav($index)" ng-class="{active: isSelected($index)}">
+          <a ui-sref="{{ item.sref }}">{{ item.name }}</a>
+        </li>
       </ul>
+
       <form id="search_form" class="navbar-form navbar-right" role="search" method="post" action="#">
         <div class="form-group">
           <div class="input-group">
