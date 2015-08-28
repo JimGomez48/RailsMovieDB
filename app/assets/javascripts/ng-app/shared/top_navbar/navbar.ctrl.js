@@ -2,7 +2,8 @@ angular.module('movieDbApp')
     .controller('NavbarCtrl', [
         '$scope',
         function ($scope) {
-            $scope.current_nav = -1;
+            $scope.collapsed = true;
+            $scope.active = -1;
 
             $scope.nav_items = [
                 {name: 'Movies', sref: 'movies.list'},
@@ -11,12 +12,24 @@ angular.module('movieDbApp')
                 {name: 'Reviews', sref: 'reviews'},
             ];
 
-            $scope.selectNav = function (index) {
-                $scope.current_nav = index;
-                console.log('nav ' + index + ' selected');
+            $scope.setActive = function (index) {
+                $scope.active = index;
+                $scope.collapsed = true;
             };
 
-            $scope.isSelected = function (index) {
-                return $scope.current_nav === index;
+            $scope.isActive = function (index) {
+                return $scope.active === index;
+            };
+
+            $scope.setCollapse = function (state) {
+                $scope.collapsed = state;
+            }
+
+            $scope.toggleCollapse = function () {
+                $scope.collapsed = !$scope.collapsed;
+            };
+
+            $scope.isCollapsed = function () {
+                return $scope.collapsed;
             }
         }]);
