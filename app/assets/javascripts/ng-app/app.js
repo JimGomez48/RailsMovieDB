@@ -1,14 +1,12 @@
 (function () {
 
     var app = angular
-        .module('movieDbApp', ['ui.router', 'templates', 'ngAnimate', 'ui.bootstrap']) //restangular
+        .module('movieDbApp', ['ui.router', 'templates', 'ngAnimate', 'ui.bootstrap', 'restangular']) //restangular
         .config([
             '$stateProvider',
             '$urlRouterProvider',
             '$locationProvider',
             function ($stateProvider, $urlRouterProvider, $locationProvider) {
-                console.log('CONFIGURING APP MODULE');
-
                 $stateProvider
                     .state('home', {
                         url: '/',

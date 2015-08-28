@@ -12,6 +12,7 @@
       "bootstrap-sass": "latest",
       "bootstrap-star-rating": "latest",
       "angular-bootstrap": "latest",
+      "lodash": "latest",
       "restangular": "latest"
     }
   }

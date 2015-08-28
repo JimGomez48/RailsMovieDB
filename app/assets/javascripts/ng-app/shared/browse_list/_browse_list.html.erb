@@ -6,18 +6,7 @@
     <div class="col-md-12">
       <div class="panel panel-dark text-left">
 
-        <div class="panel-heading">
-          <div class="btn-group pull-right">
-            <h4>
-              <button class="btn btn-ghost btn-panel btn-dark btn-circle btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                <span class="glyphicon glyphicon-option-vertical"></span>
-              </button>
-            </h4>
-          </div>
-          <h2 class="text-info">
-            panel title goes here
-          </h2>
-        </div>
+        <div class="panel-heading" browse-panel-heading title="{{panel_title}}" menuitems="panel_menu_items"></div>
 
         <div class="list-group" ui-view></div>
 
