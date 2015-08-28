@@ -2,8 +2,6 @@ angular.module('movieDbApp')
     .controller('HomeCtrl', [
         '$scope',
         function ($scope) {
-            console.log('GOT TO HOME_CONTROLLER')
-
             $scope.alerts = [
                 {type: 'info', title: "What's up!", msg: 'Go ahead and play with the site'},
                 {type: 'success', title: 'What Works?', msg: 'Just basic front-end routing from the navbar'},
