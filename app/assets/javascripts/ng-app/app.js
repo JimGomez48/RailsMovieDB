@@ -6,7 +6,8 @@
             '$stateProvider',
             '$urlRouterProvider',
             '$locationProvider',
-            function ($stateProvider, $urlRouterProvider, $locationProvider) {
+            'RestangularProvider',
+            function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) {
                 $stateProvider
                     .state('home', {
                         url: '/',
@@ -44,6 +45,22 @@
                 $locationProvider.html5Mode({
                     enabled: true,
                     requireBase: false
+                });
+
+                var BASE_URL = 'http://' + window.location.host + '/api/v1';
+                RestangularProvider.setBaseUrl(BASE_URL);
+
+                RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response, deferred) {
+                    var extractedData;
+                    // .. to look for getList operations
+                    if (operation === "getList") {
+                        // .. and handle the data and meta data
+                        extractedData = data.data;
+                        extractedData.status = data.status;
+                    } else {
+                        extractedData = data.data;
+                    }
+                    return extractedData;
                 });
             }
         ]);

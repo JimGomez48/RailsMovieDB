@@ -7,14 +7,14 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="media-left">
-          <!--<%= image_tag 'default_movie.png', height: 128 %>-->
-          <img ng-src="{{movie.img_url}}" height="128"/>
+          <%= image_tag 'default_movie.png', height: 128 %>
+          <!--<img ng-src="{{movie.img_url}}" height="128"/>-->
         </div>
         <div class="media-body">
           <h3 class="media-heading text-primary text-capitalize">{{ movie.title }}</h3>
-          <strong>Rating:</strong> {{ movie.rating }}
+          <strong>Rating:</strong> {{ movie.mpaa_rating }}
           </br>
-          <strong>Company:</strong> {{ movie.company }}
+          <strong>Company:</strong> {{movie.companies}}
           </br>
           <strong>Year:</strong> {{ movie.year }}
         </div>

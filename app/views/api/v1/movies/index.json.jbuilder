@@ -1,5 +1,5 @@
 json_envelope(json, @status, @code) do
-  json.movies @movies do |movie|
+  json.array! @movies do |movie|
     json.id movie.id
     json.title movie.cleaned_title
     json.year movie.year
