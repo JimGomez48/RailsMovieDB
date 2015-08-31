@@ -1,9 +1,10 @@
 <pagination
-    total-items="125"
-    items-per-page="20"
+    total-items="totalItems"
+    items-per-page="itemsPerPage"
     ng-model="currentPage"
     ng-change="pageChanged()"
     boundary-links="true"
+    max-size="10"
     previous-text="&lsaquo;"
     next-text="&rsaquo;"
     first-text="&laquo;"
