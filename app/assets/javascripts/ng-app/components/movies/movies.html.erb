@@ -8,12 +8,11 @@
       </div>
       <div class="media-body">
         <h3 class="media-heading text-primary text-capitalize">{{ movie.title }}</h3>
-        <strong>Rating:</strong> {{ movie.mpaa_rating }}
-        </br>
-        <strong>Company:</strong>
-        <span ng-repeat="company in movie.companies">{{$first? '' : ', '}}{{company.name}}</span>
-        </br>
-        <strong>Year:</strong> {{ movie.year }}
+        <div><strong>Rating:</strong> {{ movie.mpaa_rating }}</div>
+        <div><strong>Company:</strong>
+          <span ng-repeat="company in movie.companies">{{$first? '' : ', '}}{{company.name}}</span>
+        </div>
+        <div><strong>Year:</strong> {{ movie.year }}</div>
       </div>
     </div>
   </div>

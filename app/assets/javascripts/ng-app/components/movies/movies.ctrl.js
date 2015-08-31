@@ -20,20 +20,14 @@ angular.module('movieDbApp')
             // initialize view to page 1 of movie content
             Restangular.all('movies').getList({page: 1}).then(function (movies) {
                 $scope.movies = movies;
-                $log.debug('Current page: ' + movies.pagination['current_page']);
-                $log.debug('Total pages: ' + movies.pagination['total_pages']);
-                $log.debug('Total items: ' + movies.pagination['total_items']);
-                $log.debug('Items per page: ' + movies.pagination['items_per_page']);
                 $scope.$parent.totalItems = movies.pagination['total_items'];
                 $scope.$parent.itemsPerPage = movies.pagination['items_per_page'];
-                $log.log(PageCtrl.totalItems);
             });
 
             $rootScope.$on('PageChangedEvent', function (event, args) {
                 Restangular.all('movies').getList({page: args.page}).then(function (movies) {
                     $scope.movies = movies;
                 });
-                $log.info('MOVIES: Page changed to ' + args.page);
             })
         }
     ]);
