@@ -10,8 +10,11 @@
         <li role="menuitem" ng-repeat="item in menuitems"><a href="">{{item.title}}</a></li>
       </ul>
     </div>
-    <h2>
-      <!--<span class="{{title.glyphicon}}"></span>-->
+    <h2 ng-switch="title">
+      <span ng-switch-when="Movies" class="glyphicon glyphicon-film"></span>
+      <span ng-switch-when="Actors" class="glyphicon glyphicon-user"></span>
+      <span ng-switch-when="Directors" class="glyphicon glyphicon-bullhorn"></span>
+      <span ng-switch-default></span>
       {{title}}
     </h2>
   </div>

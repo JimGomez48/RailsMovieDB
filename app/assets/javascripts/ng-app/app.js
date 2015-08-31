@@ -50,6 +50,15 @@
                 var BASE_URL = 'http://' + window.location.host + '/api/v1';
                 RestangularProvider.setBaseUrl(BASE_URL);
 
+                /**
+                 * Expected json response format:
+                 * {
+                 *      status: "status" ["success" | "fail" | "error"]
+                 *      code:  (optional) numeric error-code if status=="error"
+                 *      data:   {} if single object OR [] if list of objects
+                 * }
+                 */
+
                 RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response, deferred) {
                     var extractedData;
                     // .. to look for getList operations
