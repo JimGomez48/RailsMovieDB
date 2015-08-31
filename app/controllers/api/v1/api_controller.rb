@@ -12,7 +12,7 @@ module Api
       FAIL = 'fail'
       ERROR = 'error'
       # pagination
-      RESULTS_PER_PAGE = 20
+      DEFAULT_PER_PAGE = 20
 
       private
       def exception_to_error_code(exception)

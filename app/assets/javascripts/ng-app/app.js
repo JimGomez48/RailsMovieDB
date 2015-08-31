@@ -55,19 +55,18 @@
                  * {
                  *      status: "status" ["success" | "fail" | "error"]
                  *      code:  (optional) numeric error-code if status=="error"
-                 *      data:   {} if single object OR [] if list of objects
+                 *      data:   {...} if single object OR [] if list of objects
+                 *      pagination: (optional) {
+                 *          current: "current page"
+                 *          total: "num pages"
+                 *      }
                  * }
                  */
 
                 RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response, deferred) {
-                    var extractedData;
-                    // .. to look for getList operations
+                    var extractedData = data.data;
                     if (operation === "getList") {
-                        // .. and handle the data and meta data
-                        extractedData = data.data;
-                        extractedData.status = data.status;
-                    } else {
-                        extractedData = data.data;
+                        extractedData.pagination = data.pagination;
                     }
                     return extractedData;
                 });

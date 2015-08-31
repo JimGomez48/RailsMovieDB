@@ -3,7 +3,18 @@ class Api::V1::MoviesController < Api::V1::ApiController
     if params[:page].nil?
       @movies = Movie.all.order(:title, :year)
     else
-      @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: RESULTS_PER_PAGE)
+      if params[:results_per_page]
+        per_page = params[:results_per_page]
+      else
+        per_page = DEFAULT_PER_PAGE
+      end
+      @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: per_page)
+      @pagination = {
+          :current_page   => @movies.current_page,
+          :total_pages    => @movies.total_pages,
+          :total_items    => Movie.count,
+          :items_per_page => per_page
+      }
     end
     @status = SUCCESS
     @code = nil
