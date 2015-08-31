@@ -6,8 +6,11 @@
             '$stateProvider',
             '$urlRouterProvider',
             '$locationProvider',
+            '$logProvider',
             'RestangularProvider',
-            function ($stateProvider, $urlRouterProvider, $locationProvider, RestangularProvider) {
+            function ($stateProvider, $urlRouterProvider, $locationProvider, $logProvider, RestangularProvider) {
+                $logProvider.debugEnabled(true);
+
                 $stateProvider
                     .state('home', {
                         url: '/',

@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <paginator></paginator>
+      <paginator total-items="totalItems" items-per-page="itemsPerPage"></paginator>
     </div>
   </div>
 
@@ -10,7 +10,7 @@
     <div class="col-md-12">
       <div class="panel panel-dark text-left">
 
-        <div class="panel-heading" browse-panel-heading title="{{panel_title}}" menuitems="panel_menu_items"></div>
+        <div class="panel-heading" browse-panel-heading title="{{panelTitle}}" menuitems="panelMenuItems"></div>
 
         <div class="list-group" ui-view></div>
 
@@ -20,7 +20,7 @@
 
   <div class="row">
     <div class="col-md-12">
-      <paginator></paginator>
+      <paginator total-items="totalItems" items-per-page="itemsPerPage"></paginator>
     </div>
   </div>
 
