@@ -4,7 +4,7 @@ class Api::V1::MoviesController < Api::V1::ApiController
       @movies = Movie.all.order(:title, :year)
     else
       if params[:results_per_page]
-        per_page = params[:results_per_page]
+        per_page = params[:results_per_page].to_i
       else
         per_page = DEFAULT_PER_PAGE
       end

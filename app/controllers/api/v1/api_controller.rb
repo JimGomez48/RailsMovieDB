@@ -29,7 +29,20 @@ module Api
             :total_items    => count,
             :items_per_page => per_page
         }
-        return @pagination
+        validate_pagination
+        @pagination
+      end
+
+      private
+      def validate_pagination
+        if @pagination[:current_page] < 0 || @pagination[:current_page] > @pagination[:total_pages]
+          raise ArgumentError,
+                "Invalid value for page => Page: #{@pagination[:current_page]}, TotalPages: #{@pagination[:total_pages]}"
+        end
+        if @pagination[:items_per_page] < 0 || @pagination[:items_per_page] > @pagination[:total_items]
+          raise ArgumentError,
+                "Invalid value for ResultsPerPage => ResultsPerPage: #{@pagination[:items_per_page]}, TotalItems: #{@pagination[:total_items]}"
+        end
       end
     end
   end
