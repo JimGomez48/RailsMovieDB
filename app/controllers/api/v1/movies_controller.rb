@@ -9,12 +9,7 @@ class Api::V1::MoviesController < Api::V1::ApiController
         per_page = DEFAULT_PER_PAGE
       end
       @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: per_page)
-      @pagination = {
-          :current_page   => @movies.current_page,
-          :total_pages    => @movies.total_pages,
-          :total_items    => Movie.count,
-          :items_per_page => per_page
-      }
+      generate_pagination(@movies, Movie.count, per_page)
     end
     @status = SUCCESS
     @code = nil
