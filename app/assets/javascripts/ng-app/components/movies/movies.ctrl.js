@@ -28,6 +28,7 @@ angular.module('movieDbApp')
             $rootScope.$on('PageChangedEvent', function (event, args) {
                 Restangular.all('movies').getList({page: args.page}).then(function (movies) {
                     $scope.movies = movies;
+                    $log.debug("Movie!");
                 });
             })
         }

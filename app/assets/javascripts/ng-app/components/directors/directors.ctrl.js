@@ -28,6 +28,7 @@ angular.module('movieDbApp')
             $rootScope.$on('PageChangedEvent', function (event, args) {
                 Restangular.all('directors').getList({page: args.page}).then(function (directors) {
                     $scope.directors = directors;
+                    $log.debug("Director!");
                 });
             })
         }]);

@@ -16,7 +16,6 @@ angular.module('movieDbApp')
             };
 
             $scope.pageChanged = function () {
-                $log.info('page changed to: ' + $scope.currentPage);
                 $rootScope.$broadcast('PageChangedEvent', {page: $scope.currentPage});
             };
 
