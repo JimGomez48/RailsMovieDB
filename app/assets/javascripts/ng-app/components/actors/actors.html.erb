@@ -3,13 +3,13 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="media-left">
-        <%= image_tag 'default_person.png.png', height: 128 %>
+        <%= image_tag 'default_person.png', height: 128 %>
         <!--<img ng-src="{{movie.img_url}}" height="128"/>-->
       </div>
       <div class="media-body">
         <h3 class="media-heading text-primary text-capitalize">{{ actor.first }} {{ actor.last }}</h3>
-        <div><strong>Born:</strong> {{ actor.dob }}</div>
-        <div ng-if="actor.dod"><strong>Died:</strong> {{ actor.dod }}</div>
+        <div><strong>Born:</strong> {{ actor.dob | date }}</div>
+        <div ng-if="actor.dod"><strong>Died:</strong> {{ actor.dod | date }}</div>
         <div><strong>Sex:</strong> {{ actor.sex }}</div>
       </div>
     </div>

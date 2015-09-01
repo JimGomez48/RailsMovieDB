@@ -10,9 +10,9 @@ angular.module('movieDbApp')
             $scope.$parent.panelTitle = 'Movies';
             // initialize menu items
             $scope.$parent.panelMenuItems = [
-                {title: 'action 1', action: '1'},
-                {title: 'action 2', action: '2'},
-                {title: 'action 3', action: '3'},
+                {title: 'movie action 1', action: '1'},
+                {title: 'movie action 2', action: '2'},
+                {title: 'movie action 3', action: '3'},
             ];
 
             var PageCtrl = $controller('PaginatorCtrl', {$scope: $scope});
@@ -20,6 +20,7 @@ angular.module('movieDbApp')
             // initialize view to page 1 of movie content
             Restangular.all('movies').getList({page: 1}).then(function (movies) {
                 $scope.movies = movies;
+                // pass pagination data to base template
                 $scope.$parent.totalItems = movies.pagination['total_items'];
                 $scope.$parent.itemsPerPage = movies.pagination['items_per_page'];
             });
