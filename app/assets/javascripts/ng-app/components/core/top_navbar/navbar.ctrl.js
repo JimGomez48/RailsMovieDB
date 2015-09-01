@@ -7,8 +7,8 @@ angular.module('movieDbApp')
 
             $scope.nav_items = [
                 {name: 'Movies', sref: 'movies.list'},
-                {name: 'Actors', sref: 'actors'},
-                {name: 'Directors', sref: 'directors'},
+                {name: 'Actors', sref: 'actors.list'},
+                {name: 'Directors', sref: 'directors.list'},
                 {name: 'Reviews', sref: 'reviews'},
             ];
 

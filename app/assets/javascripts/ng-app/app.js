@@ -28,14 +28,24 @@
                         controller: 'MoviesCtrl'
                     })
                     .state('actors', {
+                        abstract: true,
                         url: '/actors',
+                        templateUrl: 'ng-app/shared/browse_list/_browse_list.html',
+                    })
+                    .state('actors.list', {
+                        url: '/list',
                         templateUrl: 'ng-app/components/actors/actors.html',
-                        controller: 'HomeCtrl'
+                        controller: 'ActorsCtrl'
                     })
                     .state('directors', {
+                        abstract: true,
                         url: '/directors',
+                        templateUrl: 'ng-app/shared/browse_list/_browse_list.html',
+                    })
+                    .state('directors.list', {
+                        url: '/list',
                         templateUrl: 'ng-app/components/directors/directors.html',
-                        controller: 'HomeCtrl'
+                        controller: 'DirectorsCtrl'
                     })
                     .state('reviews', {
                         url: '/reviews',
