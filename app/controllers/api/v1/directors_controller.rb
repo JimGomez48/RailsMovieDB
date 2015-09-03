@@ -12,8 +12,6 @@ class Api::V1::DirectorsController < Api::V1::ApiController
 
       generate_pagination(@directors, Director.count, per_page)
     end
-    @status = SUCCESS
-    @code = nil
   end
 
   def new
@@ -31,8 +29,6 @@ class Api::V1::DirectorsController < Api::V1::ApiController
   def show
     @director = Director.find(params[:id])
     @movies = @director.movies
-    @status = SUCCESS
-    @code = nil
   end
 
   def update

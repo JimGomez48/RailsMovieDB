@@ -11,8 +11,6 @@ class Api::V1::MoviesController < Api::V1::ApiController
       @movies = Movie.all.order(:title, :year).paginate(page: params[:page], per_page: per_page)
       generate_pagination(@movies, Movie.count, per_page)
     end
-    @status = SUCCESS
-    @code = nil
   end
 
   def new
@@ -34,8 +32,6 @@ class Api::V1::MoviesController < Api::V1::ApiController
     @movie_actors = MovieActor.where(:movie_id => params[:id])
     @reviews = Review.where(:movie_id => params[:id])
     @avg_rating = @avg_rating = @reviews.average(:rating)
-    @status = SUCCESS
-    @code = nil
   end
 
   def update

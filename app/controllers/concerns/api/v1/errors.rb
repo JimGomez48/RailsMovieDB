@@ -2,76 +2,82 @@ module Api
   module V1
     module Errors
       # 400 errors
-      class ApiError < StandardError;
+      class ClientError < StandardError;
         attr_reader :code
+        attr_reader :errors
 
-        def initialize(msg)
-          super(msg)
-          @code = nil
+        def initialize(code, errors)
+          @code = code
+          @errors = errors
         end
       end
 
-      class AuthenticationError < ApiError
-        def initialize(msg)
-          super(msg)
-          @code = 401
+      class AuthenticationError < ClientError
+        def initialize(errors)
+          super(401, errors)
         end
       end
 
-      class NotFoundError < ApiError
-        def initialize(msg)
-          super(msg)
-          @code = 404
+      class NotFoundError < ClientError
+        def initialize(errors)
+          super(404, errors)
         end
       end
 
-      class MethodNotAllowedError < ApiError
-        def initialize(msg)
-          super(msg)
-          @code = 405
+      class MethodNotAllowedError < ClientError
+        def initialize(errors)
+          super(405, errors)
         end
       end
 
-      class LengthRequiredError < ApiError
-        def initialize(msg)
-          super(msg)
+      class LengthRequiredError < ClientError
+        def initialize(errors)
+          super(411, errors)
           @code = 411
         end
       end
 
-      class RangeNotSatisfiableError < ApiError
-        def initialize(msg)
-          super(msg)
-          @code = 416
+      class RangeNotSatisfiableError < ClientError
+        def initialize(errors)
+          super(416, errors)
         end
       end
-
 
       # 500 errors
-      class InternalServerError < ApiError
-        def initialize(msg)
+      class ServerError < StandardError;
+        attr_reader :code
+
+        def initialize(code, msg)
           super(msg)
-          @code = 500
+          @code = code
         end
       end
 
-      class NotImplementedError < ApiError
+      class InternalServerError < ServerError
         def initialize(msg)
-          super(msg)
-          @code = 501
+          super(500, msg)
         end
       end
 
-      class UnavailableError < ApiError
+      class NotImplementedError < ServerError
         def initialize(msg)
-          super(msg)
-          @code = 503
+          super(501, msg)
+        end
+      end
+
+      class UnavailableError < ServerError
+        def initialize(msg)
+          super(503, msg)
         end
       end
 
       module RescueError
         def self.included(base)
-          base.rescue_from Errors::ApiError do |e|
+          base.rescue_from Errors::ClientError do |e|
+            render :json => {:status => 'fail', :data => e.errors, :code => e.code}, status: e.code
+          end
+
+          base.rescue_from Errors::ServerError do |e|
             render :json => {:status => 'error', :message => e.message, :code => e.code}, status: e.code
           end
         end
