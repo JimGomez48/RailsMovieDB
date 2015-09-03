@@ -3,6 +3,8 @@ module Api
     class ApiController < ActionController::API
       include ActionController::ImplicitRender
       include ActionController::Helpers
+      include Errors::RescueError
+
       # Prevent CSRF attacks by raising an exception.
       # For APIs, you may want to use :null_session instead.
       # protect_from_forgery with: :null_session
@@ -35,13 +37,13 @@ module Api
 
       private
       def validate_pagination
-        if @pagination[:current_page] < 0 || @pagination[:current_page] > @pagination[:total_pages]
-          raise ArgumentError,
-                "Invalid value for page => Page: #{@pagination[:current_page]}, TotalPages: #{@pagination[:total_pages]}"
+        if @pagination[:current_page] < 1 || @pagination[:current_page] > @pagination[:total_pages]
+          raise Errors::RangeNotSatisfiableError,
+                "Invalid page value. page: #{@pagination[:current_page]}, total_pages: #{@pagination[:total_pages]}, results_per_page=#{@pagination[:items_per_page]}"
         end
-        if @pagination[:items_per_page] < 0 || @pagination[:items_per_page] > @pagination[:total_items]
-          raise ArgumentError,
-                "Invalid value for ResultsPerPage => ResultsPerPage: #{@pagination[:items_per_page]}, TotalItems: #{@pagination[:total_items]}"
+        if @pagination[:items_per_page] < 1 || @pagination[:items_per_page] > @pagination[:total_items]
+          raise Errors::RangeNotSatisfiableError,
+                "Invalid results_per_page value. results_per_page: #{@pagination[:items_per_page]}, total_items: #{@pagination[:total_items]}"
         end
       end
     end
