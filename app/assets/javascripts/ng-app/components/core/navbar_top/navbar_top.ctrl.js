@@ -8,7 +8,8 @@ angular.module('movieDbApp')
             $scope.nav_items = [
                 { label : 'Movies', state: 'movies' },
                 { label : 'Actors', state: 'actors' },
-                { label : 'Directors', state: 'directors' }
+                { label : 'Directors', state: 'directors' },
+                { label : 'Companies', state: 'companies' }
             ];
 
             $scope.setActive = function (index) {

@@ -21,42 +21,37 @@
                         url: '/',
                         templateUrl: 'ng-app/components/home/home.html',
                         controller: 'HomeCtrl'
+                    })
+                    .state('movies', {
+                        parent: 'base',
+                        url: '/movies',
+                        templateUrl: 'ng-app/components/movies/index/index.html',
+                        controller: 'MoviesIndexCtrl'
+                    })
+                    .state('movies.show', {
+                        url: '/{movie_id:int}',
+                        templateUrl: 'ng-app/components/movies/show/show.html',
+                        controller: 'MoviesShowCtrl'
+                    })
+                    .state('actors', {
+                        parent: 'base',
+                        url: '/actors',
+                        templateUrl: 'ng-app/components/actors/index/index.html',
+                        controller: 'ActorsIndexCtrl'
+                    })
+                    .state('directors', {
+                        parent: 'base',
+                        url: '/directors',
+                        templateUrl: 'ng-app/components/directors/index/index.html',
+                        controller: 'DirectorsIndexCtrl'
+                    })
+                    .state('companies', {
+                        parent: 'base',
+                        url: '/companies',
+                        templateUrl: 'ng-app/components/companies/index/index.html',
+                        controller: 'CompaniesIndexCtrl'
                     });
-                    //.state('movies', {
-                    //    abstract: true,
-                    //    url: '/movies',
-                    //    templateUrl: 'ng-app-old/shared/browse_list/_browse_list.html',
-                    //})
-                    //.state('movies.list', {
-                    //    url: '',
-                    //    templateUrl: 'ng-app-old/components/movies/movies.html',
-                    //    controller: 'MoviesCtrl'
-                    //})
-                    //.state('actors', {
-                    //    abstract: true,
-                    //    url: '/actors',
-                    //    templateUrl: 'ng-app-old/shared/browse_list/_browse_list.html',
-                    //})
-                    //.state('actors.list', {
-                    //    url: '',
-                    //    templateUrl: 'ng-app-old/components/actors/actors.html',
-                    //    controller: 'ActorsCtrl'
-                    //})
-                    //.state('directors', {
-                    //    abstract: true,
-                    //    url: '/directors',
-                    //    templateUrl: 'ng-app-old/shared/browse_list/_browse_list.html',
-                    //})
-                    //.state('directors.list', {
-                    //    url: '',
-                    //    templateUrl: 'ng-app-old/components/directors/directors.html',
-                    //    controller: 'DirectorsCtrl'
-                    //})
-                    //.state('reviews', {
-                    //    url: '/reviews',
-                    //    templateUrl: 'ng-app-old/components/reviews/reviews.html',
-                    //    controller: 'HomeCtrl'
-                    //});
+
 
                 $urlRouterProvider.otherwise('/');
 
