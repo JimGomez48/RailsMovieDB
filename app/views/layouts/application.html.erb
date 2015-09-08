@@ -11,13 +11,9 @@
 
 <body ng-app="movieDbApp">
 <div id="master-container">
-  <navbar-section></navbar-section>
 
-  <div id="main" class="jumbotron text-center">
-    <%= yield %>
-  </div>
+  <ui-view></ui-view>
 
-  <footer-section></footer-section>
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'application#index'
 
   # api resource routes
   namespace :api, defaults: {format: 'json'} do
@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # static routes for serving angular apps
-  get '*path' => 'home#index', as: :home_path
+  # static routes for serving AngularJS apps
+  get '*path' => 'application#index'
 end

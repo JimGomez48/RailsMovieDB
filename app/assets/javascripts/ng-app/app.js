@@ -12,46 +12,51 @@
                 $logProvider.debugEnabled(true);
 
                 $stateProvider
+                    .state('base', {
+                        abstract: true,
+                        templateUrl: 'ng-app/shared/base/base.html'
+                    })
                     .state('home', {
+                        parent: 'base',
                         url: '/',
                         templateUrl: 'ng-app/components/home/home.html',
                         controller: 'HomeCtrl'
-                    })
-                    .state('movies', {
-                        abstract: true,
-                        url: '/movies',
-                        templateUrl: 'ng-app/shared/browse_list/_browse_list.html',
-                    })
-                    .state('movies.list', {
-                        url: '/list',
-                        templateUrl: 'ng-app/components/movies/movies.html',
-                        controller: 'MoviesCtrl'
-                    })
-                    .state('actors', {
-                        abstract: true,
-                        url: '/actors',
-                        templateUrl: 'ng-app/shared/browse_list/_browse_list.html',
-                    })
-                    .state('actors.list', {
-                        url: '/list',
-                        templateUrl: 'ng-app/components/actors/actors.html',
-                        controller: 'ActorsCtrl'
-                    })
-                    .state('directors', {
-                        abstract: true,
-                        url: '/directors',
-                        templateUrl: 'ng-app/shared/browse_list/_browse_list.html',
-                    })
-                    .state('directors.list', {
-                        url: '/list',
-                        templateUrl: 'ng-app/components/directors/directors.html',
-                        controller: 'DirectorsCtrl'
-                    })
-                    .state('reviews', {
-                        url: '/reviews',
-                        templateUrl: 'ng-app/components/reviews/reviews.html',
-                        controller: 'HomeCtrl'
                     });
+                    //.state('movies', {
+                    //    abstract: true,
+                    //    url: '/movies',
+                    //    templateUrl: 'ng-app-old/shared/browse_list/_browse_list.html',
+                    //})
+                    //.state('movies.list', {
+                    //    url: '',
+                    //    templateUrl: 'ng-app-old/components/movies/movies.html',
+                    //    controller: 'MoviesCtrl'
+                    //})
+                    //.state('actors', {
+                    //    abstract: true,
+                    //    url: '/actors',
+                    //    templateUrl: 'ng-app-old/shared/browse_list/_browse_list.html',
+                    //})
+                    //.state('actors.list', {
+                    //    url: '',
+                    //    templateUrl: 'ng-app-old/components/actors/actors.html',
+                    //    controller: 'ActorsCtrl'
+                    //})
+                    //.state('directors', {
+                    //    abstract: true,
+                    //    url: '/directors',
+                    //    templateUrl: 'ng-app-old/shared/browse_list/_browse_list.html',
+                    //})
+                    //.state('directors.list', {
+                    //    url: '',
+                    //    templateUrl: 'ng-app-old/components/directors/directors.html',
+                    //    controller: 'DirectorsCtrl'
+                    //})
+                    //.state('reviews', {
+                    //    url: '/reviews',
+                    //    templateUrl: 'ng-app-old/components/reviews/reviews.html',
+                    //    controller: 'HomeCtrl'
+                    //});
 
                 $urlRouterProvider.otherwise('/');
 
