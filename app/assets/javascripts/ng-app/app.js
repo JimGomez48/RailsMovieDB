@@ -52,7 +52,6 @@
                         controller: 'CompaniesIndexCtrl'
                     });
 
-
                 $urlRouterProvider.otherwise('/');
 
                 $locationProvider.html5Mode({
@@ -70,12 +69,13 @@
                  *      code:  (optional) numeric error-code if status=="error"
                  *      data:   {...} if single object OR [] if list of objects
                  *      pagination: (optional) {
-                 *          current: "current page"
-                 *          total: "num pages"
+                 *          current_page: "current page"
+                 *          total_pages: "total num pages"
+                 *          total_items: "total num items"
+                 *          items_per_page: "num items per page"
                  *      }
                  * }
                  */
-
                 RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response, deferred) {
                     var extractedData = data.data;
                     if (operation === "getList") {
