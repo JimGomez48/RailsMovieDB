@@ -3,7 +3,5 @@ angular.module('movieDbApp')
         '$scope',
         '$log',
         function ($scope, $log) {
-            $scope.onMenuItemClick = function(index) {
-                $log.info('item ' + index + ' clicked');
-            };
+            // controller logic
         }]);

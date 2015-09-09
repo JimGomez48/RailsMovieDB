@@ -51,6 +51,14 @@ html, body {
   }
 }
 
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
 .errorlist {
   color: #cd5350
 }
@@ -193,7 +201,7 @@ a.errorlist:hover {
   }
 
   &.btn-dark {
-    &:hover, &:focus, &:active {
+    &:hover, &:active {
       color: ghostwhite;
       background: $color_dark_light;
     }
