@@ -2,8 +2,8 @@ angular.module('movieDbApp')
     .controller('DirectorsIndexCtrl', [
         '$scope',
         '$log',
-        '$state',
-        function ($scope, $log, $state) {
+        'Restangular',
+        function ($scope, $log, Restangular) {
             $log.debug('instantiate DirectorsIndexCtrl');
 
             $scope.panelTitle = 'Directors';
@@ -27,4 +27,21 @@ angular.module('movieDbApp')
                     }
                 }
             ];
+
+            // initialize list data
+            $scope.totalItems = 0;
+            $scope.itemsPerPage = 20;
+            $scope.currentPage = 0;
+
+            Restangular.all('directors').getList({page: 1}).then(function (directors) {
+                $scope.directors = directors;
+                $scope.totalItems = directors.pagination['total_items'];
+                $scope.itemsPerPage = directors.pagination['items_per_page'];
+            });
+
+            $scope.onPageChanged = function () {
+                Restangular.all('directors').getList({page: $scope.currentPage}).then(function (directors) {
+                    $scope.directors = directors;
+                });
+            };
         }]);

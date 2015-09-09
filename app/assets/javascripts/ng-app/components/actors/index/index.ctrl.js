@@ -2,8 +2,8 @@ angular.module('movieDbApp')
     .controller('ActorsIndexCtrl', [
         '$scope',
         '$log',
-        '$state',
-        function ($scope, $log, $state) {
+        'Restangular',
+        function ($scope, $log, Restangular) {
             $log.debug('instantiate ActorsIndexCtrl');
 
             $scope.panelTitle = 'Actors';
@@ -23,8 +23,25 @@ angular.module('movieDbApp')
                 {
                     label: 'actor action 3',
                     action: function () {
-                        alert('movie action 3')
+                        alert('actor action 3')
                     }
                 }
             ];
+
+            // initialize list data
+            $scope.totalItems = 0;
+            $scope.itemsPerPage = 20;
+            $scope.currentPage = 0;
+
+            Restangular.all('actors').getList({page: 1}).then(function (actors) {
+                $scope.actors = actors;
+                $scope.totalItems = actors.pagination['total_items'];
+                $scope.itemsPerPage = actors.pagination['items_per_page'];
+            });
+
+            $scope.onPageChanged = function () {
+                Restangular.all('actors').getList({page: $scope.currentPage}).then(function (actors) {
+                    $scope.actors = actors;
+                });
+            };
         }]);

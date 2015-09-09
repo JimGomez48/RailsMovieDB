@@ -2,7 +2,8 @@ angular.module('movieDbApp')
     .controller('CompaniesIndexCtrl', [
         '$scope',
         '$log',
-        function ($scope, $log) {
+        'Restangular',
+        function ($scope, $log, Restangular) {
             $log.debug('instantiate CompaniesIndexCtrl');
 
             $scope.panelTitle = 'Companies';
@@ -26,4 +27,21 @@ angular.module('movieDbApp')
                     }
                 }
             ];
+
+            // initialize list data
+            $scope.totalItems = 0;
+            $scope.itemsPerPage = 20;
+            $scope.currentPage = 0;
+
+            Restangular.all('companies').getList({page: 1}).then(function (companies) {
+                $scope.companies = companies;
+                $scope.totalItems = companies.pagination['total_items'];
+                $scope.itemsPerPage = companies.pagination['items_per_page'];
+            });
+
+            $scope.onPageChanged = function () {
+                Restangular.all('companies').getList({page: $scope.currentPage}).then(function (companies) {
+                    $scope.companies = companies;
+                });
+            };
         }]);

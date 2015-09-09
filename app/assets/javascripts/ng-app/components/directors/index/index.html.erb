@@ -1,15 +1,45 @@
 <div class="row">
   <div class="col-md-12">
-    <section class="panel panel-dark text-left">
 
+    <pagination
+    total-items="totalItems"
+    items-per-page="itemsPerPage"
+    ng-model="currentPage"
+    ng-change="onPageChanged()"
+    boundary-links="true"
+    max-size="10"
+    previous-text="&lsaquo;"
+    next-text="&rsaquo;"
+    first-text="&laquo;"
+    last-text="&raquo;"
+    ng-hide="totalItems/itemsPerPage <= 1">
+    </pagination>
+
+    <section class="panel panel-dark text-left">
       <panel-header title="{{panelTitle}}" menu-items="menuItems"></panel-header>
 
       <div class="list-group">
-        <li class="list-group-item text-center">
+        <li class="list-group-item text-center" ng-if="directors == null || directors.length <= 0">
           <h4><em>No directors to display</em></h4>
         </li>
+        <director-item ng-repeat="director in directors" director="director"></director-item>
       </div>
-
     </section>
+
+    <pagination
+    total-items="totalItems"
+    items-per-page="itemsPerPage"
+    ng-model="currentPage"
+    ng-change="onPageChanged()"
+    boundary-links="true"
+    max-size="10"
+    previous-text="&lsaquo;"
+    next-text="&rsaquo;"
+    first-text="&laquo;"
+    last-text="&raquo;"
+    ng-hide="totalItems/itemsPerPage <= 1">
+    </pagination>
+
+
   </div>
 </div>
