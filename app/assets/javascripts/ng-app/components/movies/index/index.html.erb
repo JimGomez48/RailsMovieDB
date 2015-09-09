@@ -1,15 +1,44 @@
 <div class="row">
   <div class="col-md-12">
-    <section class="panel panel-dark text-left">
 
+    <pagination
+    total-items="totalItems"
+    items-per-page="itemsPerPage"
+    ng-model="currentPage"
+    ng-change="onPageChanged()"
+    boundary-links="true"
+    max-size="10"
+    previous-text="&lsaquo;"
+    next-text="&rsaquo;"
+    first-text="&laquo;"
+    last-text="&raquo;"
+    ng-hide="totalItems/itemsPerPage <= 1">
+    </pagination>
+
+    <section class="panel panel-dark text-left">
       <panel-header title="{{panelTitle}}" menu-items="menuItems"></panel-header>
 
       <div class="list-group">
-        <li class="list-group-item text-center">
+        <li class="list-group-item text-center" ng-if="movies == null || movies.length <= 0">
           <h4><em>No movies to display</em></h4>
         </li>
+        <movie-item ng-repeat="movie in movies" movie="movie"></movie-item>
       </div>
-
     </section>
+
+    <pagination
+    total-items="totalItems"
+    items-per-page="itemsPerPage"
+    ng-model="currentPage"
+    ng-change="onPageChanged()"
+    boundary-links="true"
+    max-size="10"
+    previous-text="&lsaquo;"
+    next-text="&rsaquo;"
+    first-text="&laquo;"
+    last-text="&raquo;"
+    ng-hide="totalItems/itemsPerPage <= 1">
+    </pagination>
+
   </div>
 </div>
