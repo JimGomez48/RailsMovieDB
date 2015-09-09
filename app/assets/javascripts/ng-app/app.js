@@ -24,7 +24,12 @@
                     })
                     .state('movies', {
                         parent: 'base',
+                        abstract: true,
                         url: '/movies',
+                        template: '<ui-view></ui-view>'
+                    })
+                    .state('movies.index', {
+                        url: '',
                         templateUrl: 'ng-app/components/movies/index/index.html',
                         controller: 'MoviesIndexCtrl'
                     })
@@ -35,19 +40,34 @@
                     })
                     .state('actors', {
                         parent: 'base',
+                        abstract: true,
                         url: '/actors',
+                        template: '<ui-view></ui-view>'
+                    })
+                    .state('actors.index', {
+                        url: '',
                         templateUrl: 'ng-app/components/actors/index/index.html',
                         controller: 'ActorsIndexCtrl'
                     })
                     .state('directors', {
                         parent: 'base',
+                        abstract: true,
                         url: '/directors',
+                        template: '<ui-view></ui-view>'
+                    })
+                    .state('directors.index', {
+                        url: '',
                         templateUrl: 'ng-app/components/directors/index/index.html',
                         controller: 'DirectorsIndexCtrl'
                     })
                     .state('companies', {
                         parent: 'base',
+                        abstract: true,
                         url: '/companies',
+                        template: '<ui-view></ui-view>'
+                    })
+                    .state('companies.index', {
+                        url: '',
                         templateUrl: 'ng-app/components/companies/index/index.html',
                         controller: 'CompaniesIndexCtrl'
                     });

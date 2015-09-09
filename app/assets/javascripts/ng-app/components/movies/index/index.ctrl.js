@@ -26,9 +26,4 @@ angular.module('movieDbApp')
                     }
                 }
             ];
-
-            $scope.onMenuItemClick = function () {
-                $log.info('item clicked');
-            };
-
         }]);
