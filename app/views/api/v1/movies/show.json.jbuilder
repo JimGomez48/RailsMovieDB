@@ -1,4 +1,4 @@
-json_envelope(json, @pagination) do
+json_envelope(json) do
   json.movie do
     json.id @movie.id
     json.title @movie.cleaned_title

@@ -5,4 +5,8 @@ class Actor < ActiveRecord::Base
   def full_name
     "#{first} #{last}"
   end
+
+  def movie_actor_role(movie_id)
+    self.movie_actors.find_by(:movie_id => movie_id).movie_actor_roles
+  end
 end

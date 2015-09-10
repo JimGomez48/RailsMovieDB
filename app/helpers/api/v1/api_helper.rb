@@ -1,5 +1,5 @@
 module Api::V1::ApiHelper
-  def json_envelope(json, pagination)
+  def json_envelope(json, pagination=nil)
     json.status 'success'
     json.data do
       yield if block_given?

@@ -27,10 +27,7 @@ class Api::V1::ActorsController < Api::V1::ApiController
 
   def show
     @actor = Actor.find(params[:id])
-    @movies = Movie.joins(:movie_actors)
-                  .where('movie_actors.actor_id' => params[:id])
-                  .select('movies.id', 'movies.title', 'movies.year', 'movies.rating', 'movies.company', 'movie_actors.role')
-                  .order('movies.year DESC', 'movies.title')
+    @movies = @actor.movies
   end
 
   def update

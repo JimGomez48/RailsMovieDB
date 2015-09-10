@@ -1,4 +1,4 @@
-json_envelope(json, @pagination) do
+json_envelope(json) do
   json.director do
     json.id @director.id
     json.last @director.last
