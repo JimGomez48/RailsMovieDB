@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       resources :directors do
         resources :movies
       end
+      resources :companies do
+        resources :movies
+      end
       resources :reviews, only: [:index, :show, :new, :create, :edit, :update]
     end
   end
